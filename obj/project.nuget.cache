@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rdn7S/7s6vmxl3y0JyKUp4NfF27pjlezKJvs6hq0wJj4NP6oKiNT6wSNGX1eMWNCaOdCbLt0OF9ZcaYhlqC4lg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Leo\\source\\repos\\bluedit\\bluedit.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Leo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512"
+  ],
+  "logs": []
+}
