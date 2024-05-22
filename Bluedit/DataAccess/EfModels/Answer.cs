@@ -15,6 +15,8 @@ public partial class Answer
 
     public DateTime CreationDate { get; set; }
 
+    public virtual ICollection<Opinion> Opinions { get; set; } = new List<Opinion>();
+
     public virtual Thread Thread { get; set; } = null!;
 
     public virtual ICollection<Thread> Threads { get; set; } = new List<Thread>();

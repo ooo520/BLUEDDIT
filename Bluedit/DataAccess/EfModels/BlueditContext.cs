@@ -27,7 +27,7 @@ public partial class BlueditContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=bluedit;User Id=SA;Password=LEMDP;Trusted_Connection=False;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=bluedit;User Id=SA;Password=1212Azerty./;Trusted_Connection=False;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -84,6 +84,11 @@ public partial class BlueditContext : DbContext
             entity.Property(e => e.AnswerId).HasColumnName("answerId");
             entity.Property(e => e.AuthorId).HasColumnName("authorId");
             entity.Property(e => e.Like).HasColumnName("like");
+
+            entity.HasOne(d => d.Answer).WithMany(p => p.Opinions)
+                .HasForeignKey(d => d.AnswerId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_opinion_answer1");
 
             entity.HasOne(d => d.Author).WithMany(p => p.Opinions)
                 .HasForeignKey(d => d.AuthorId)

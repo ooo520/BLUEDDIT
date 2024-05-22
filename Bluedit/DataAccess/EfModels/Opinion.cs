@@ -13,5 +13,7 @@ public partial class Opinion
 
     public long AuthorId { get; set; }
 
+    public virtual Answer Answer { get; set; } = null!;
+
     public virtual User Author { get; set; } = null!;
 }

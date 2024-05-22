@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bluedit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7159f42ff642a923e242ccdf80b50776b1836373")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f836f16f6c4df6a03e9b69618f383abd9e535df")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bluedit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bluedit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
