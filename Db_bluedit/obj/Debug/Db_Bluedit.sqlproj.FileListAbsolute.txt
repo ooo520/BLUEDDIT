@@ -1,0 +1,6 @@
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\bin\Debug\Db_Bluedit.dacpac
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\bin\Debug\db.dll
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\bin\Debug\db.pdb
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\obj\Debug\Db_Bluedit.sqlproj.AssemblyReference.cache
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\obj\Debug\db.dll
+C:\Users\Leo\OneDrive\Documents\epita\trav\S8\dotnet\BLUEDDIT\Db_bluedit\obj\Debug\db.pdb
