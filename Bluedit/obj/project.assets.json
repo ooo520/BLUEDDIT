@@ -106,9 +106,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\bluedit.csproj",
-      "projectName": "bluedit",
-      "projectPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\bluedit.csproj",
+      "projectUniqueName": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
+      "projectName": "Bluedit",
+      "projectPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
       "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\obj\\",
       "projectStyle": "PackageReference",
@@ -173,7 +173,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

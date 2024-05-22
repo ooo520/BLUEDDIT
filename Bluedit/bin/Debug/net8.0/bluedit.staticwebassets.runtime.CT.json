@@ -557,11 +557,11 @@
         "Asset": null,
         "Patterns": null
       },
-      "bluedit.styles.css": {
+      "Bluedit.styles.css": {
         "Children": null,
         "Asset": {
           "ContentRootIndex": 1,
-          "SubPath": "bluedit.styles.css"
+          "SubPath": "Bluedit.styles.css"
         },
         "Patterns": null
       }

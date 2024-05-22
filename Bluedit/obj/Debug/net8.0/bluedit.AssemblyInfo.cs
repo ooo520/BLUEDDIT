@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("bluedit")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Bluedit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+318f8ce1b91f435cdab114a9e4ccb413ce47d3ff")]
-[assembly: System.Reflection.AssemblyProductAttribute("bluedit")]
-[assembly: System.Reflection.AssemblyTitleAttribute("bluedit")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cb438bbb6c3f929d22502c1c4fbaffa8efce43a")]
+[assembly: System.Reflection.AssemblyProductAttribute("Bluedit")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Bluedit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Généré par la classe MSBuild WriteCodeFragment.

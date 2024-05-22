@@ -1,4 +1,4 @@
-namespace bluedit
+namespace Bluedit
 {
     public class Program
     {

@@ -1,12 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\bluedit.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\bluedit.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Bluedit",
+              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
+              "RelativeDocumentMoniker": "Bluedit\\Bluedit.csproj",
+              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
+              "RelativeToolTip": "Bluedit\\Bluedit.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-22T16:36:54.243Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

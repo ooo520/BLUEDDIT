@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\build\bluedit.props" />
+  <Import Project="..\build\Bluedit.props" />
 </Project>

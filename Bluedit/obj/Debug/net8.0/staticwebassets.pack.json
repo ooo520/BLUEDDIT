@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\bluedit.bundle.scp.css",
-      "PackagePath": "staticwebassets\\bluedit.bundle.scp.css"
+      "Id": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Bluedit.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Bluedit.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\wwwroot\\css\\site.css",
@@ -245,20 +245,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.bluedit.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Bluedit.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.bluedit.props",
-      "PackagePath": "build\\bluedit.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Bluedit.props",
+      "PackagePath": "build\\Bluedit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.bluedit.props",
-      "PackagePath": "buildMultiTargeting\\bluedit.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Bluedit.props",
+      "PackagePath": "buildMultiTargeting\\Bluedit.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.bluedit.props",
-      "PackagePath": "buildTransitive\\bluedit.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Bluedit.props",
+      "PackagePath": "buildTransitive\\Bluedit.props"
     }
   ],
   "ElementsToRemove": []

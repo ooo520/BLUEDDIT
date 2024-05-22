@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Sg3wJcZcXCCJGrLDcGRsivITPP88bJ5VOXDUy2LUYCa0F6tIPlvFG+QU8zef+X9nHeb+oRLh/2WwpF8oeSe0ew==",
+  "dgSpecHash": "u10h+IcX4uVEqaQ+06bgQ5YaiKQjsRqS8J0PUd/cq7CcZ34yo5mNWsS6HCrDrxJ6qUk5KC9Zcc9DVmFawGZGHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\bluedit.csproj",
+  "projectFilePath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Leo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.6\\microsoft.visualstudio.azure.containers.tools.targets.1.19.6.nupkg.sha512"
   ],

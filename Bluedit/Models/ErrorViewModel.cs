@@ -1,4 +1,4 @@
-namespace bluedit.Models
+namespace Bluedit.Models
 {
     public class ErrorViewModel
     {
