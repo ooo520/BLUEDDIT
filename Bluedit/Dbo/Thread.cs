@@ -1,6 +1,6 @@
 ﻿namespace Bluedit.Dbo
 {
-    public class Thread
+    public class Thread : IObjectWithId
     {
         public long Id { get; set; }
 
