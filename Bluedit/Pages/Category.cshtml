@@ -1,0 +1,36 @@
+﻿@page "/b/{CategoryName}"
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Bluedit.Pages.CategoryModel
+@{
+}
+
+<style>
+	.threads {
+		background-color: red;
+	}
+</style>
+
+<div class="threads">
+	nice !!!!
+	@foreach(var Thread in Model.Threads) {
+		<a asp-page="/b/@Model.CategoryName/@Thread.RootAnswerId">
+		<div>
+			<h2>@Thread.Title</h2>
+			<!-- TODO: link -->
+			<div><div>@Thread.RootAnswer.User.Name</div><div>@Thread.RootAnswer.CreationDate.ToLongDateString()</div></div>
+			<p>
+				@Thread.RootAnswer.Content
+			</p>
+			<div>
+				<div>Upvote </div>
+				<div>Count </div>
+				<div>Downvote </div>
+			</div>
+		</div>
+		@if (Thread != Model.Threads.Last())
+		{
+			<hr />
+		}
+		</a>
+	}
+</div>
