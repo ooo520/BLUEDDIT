@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj": {}
+    "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Bluedit.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj": {
+    "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Bluedit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
+        "projectUniqueName": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
         "projectName": "Bluedit",
-        "projectPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
-        "packagesPath": "C:\\Users\\Leo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\obj\\",
+        "projectPath": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Bluedit.csproj",
+        "packagesPath": "C:\\Users\\Léo\\.nuget\\packages\\",
+        "outputPath": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Leo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Léo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,42 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\",
+  "WorkspaceRootPath": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|e:\\outil de programmation\\tp .net\\projet\\blueddit\\bluedit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\threadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\threadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\opinionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\opinionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\interfaces\\ithreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\interfaces\\ithreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\interfaces\\iopinionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\interfaces\\iopinionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|c:\\users\\leo\\onedrive\\documents\\epita\\trav\\s8\\dotnet\\blueddit\\bluedit\\dataaccess\\answerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\dataaccess\\answerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|e:\\outil de programmation\\tp .net\\projet\\blueddit\\bluedit\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B180A473-457A-473C-B746-9EB0CED7E42D}|Bluedit\\Bluedit.csproj|solutionrelative:bluedit\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,123 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\UserRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\UserRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\UserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:10:14.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\Interfaces\\IUserRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IUserRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\Interfaces\\IUserRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:09:54.977Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ThreadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\ThreadRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\ThreadRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\ThreadRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\ThreadRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:09:01.508Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\appsettings.json",
+              "RelativeDocumentMoniker": "Bluedit\\appsettings.json",
+              "ToolTip": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\appsettings.json",
+              "RelativeToolTip": "Bluedit\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-23T16:32:40.963Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IThreadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IThreadRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\Interfaces\\IThreadRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IThreadRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\Interfaces\\IThreadRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Program.cs",
+              "RelativeDocumentMoniker": "Bluedit\\Program.cs",
+              "ToolTip": "E:\\Outil de programmation\\TP .NET\\Projet\\BLUEDDIT\\Bluedit\\Program.cs",
+              "RelativeToolTip": "Bluedit\\Program.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAgwFQAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:08:44.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\IRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\IRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\IRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\IRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:06:05.552Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OpinionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\OpinionRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\OpinionRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\OpinionRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\OpinionRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:05:58.338Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IOpinionRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IOpinionRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\Interfaces\\IOpinionRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\Interfaces\\IOpinionRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\Interfaces\\IOpinionRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:05:43.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AnswerRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\AnswerRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\AnswerRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\AnswerRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\AnswerRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:04:57.14Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\CategoryRepository.cs",
-              "RelativeDocumentMoniker": "Bluedit\\DataAccess\\CategoryRepository.cs",
-              "ToolTip": "C:\\Users\\Leo\\OneDrive\\Documents\\epita\\trav\\S8\\dotnet\\BLUEDDIT\\Bluedit\\DataAccess\\CategoryRepository.cs",
-              "RelativeToolTip": "Bluedit\\DataAccess\\CategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T19:04:54.927Z",
+              "WhenOpened": "2024-05-23T16:00:22.155Z",
               "EditorCaption": ""
             }
           ]

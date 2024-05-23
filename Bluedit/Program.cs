@@ -1,6 +1,7 @@
 using AutoMapper;
 using Bluedit.DataAccess;
 using Bluedit.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bluedit
 {
@@ -12,6 +13,16 @@ namespace Bluedit
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddEntityFrameworkSqlServer()
+                        .AddDbContext<Bluedit.DataAccess.EfModels.BlueditContext>(options => options.UseSqlServer("name=ConnectionStrings:Bluedit"));
+            builder.Services.AddAutoMapper(typeof(Bluedit.DataAccess.AutomapperProfiles));
+            builder.Services.AddRazorPages();
+            builder.Services.AddControllers();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IAnswerRepository, Bluedit.DataAccess.AnswerRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.ICategoryRepository, Bluedit.DataAccess.CategoryRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IOpinionRepository, Bluedit.DataAccess.OpinionRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IThreadRepository, Bluedit.DataAccess.ThreadRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IUserRepository, Bluedit.DataAccess.UserRepository>();
 
             var app = builder.Build();
 
@@ -19,7 +30,11 @@ namespace Bluedit
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
+
+            app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -30,7 +45,10 @@ namespace Bluedit
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            app.MapRazorPages();
+
             app.Run();
+
             // --------------------------------------------------------------------------------------------------
             /*
             ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
@@ -55,6 +73,28 @@ namespace Bluedit
 
             repo.Delete(2).Wait();
             */
+
+            ILogger<CategoryRepository> logger = app.Services.GetRequiredService<ILogger<CategoryRepository>>();
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<DataAccess.AutomapperProfiles>();
+            });
+
+            var mapper = config.CreateMapper();
+            var repo = new DataAccess.CategoryRepository(new DataAccess.EfModels.BlueditContext(), logger, mapper);
+
+            //repo.Create(new Dbo.Category() { Name = "dhxlcdvkmlcvfjkclsmvfkjl", Title = "kjdfhsldckksdkfsl" }).Wait();
+            //var T = repo.Read();
+            // Dbo.Category shortcut = T.Result.First();
+            //T.Wait();
+            //Console.WriteLine(shortcut.Title + shortcut.Id);
+            //shortcut.Title = "Un titre";
+            //shortcut = repo.Update(shortcut).Result;
+            //Console.WriteLine(shortcut.Title + shortcut.Id);
+
+            //repo.Delete(shortcut.Id).Wait();
+            app.Run();
         }
     }
 }
