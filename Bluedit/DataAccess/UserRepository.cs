@@ -7,7 +7,11 @@ namespace Bluedit.DataAccess
     {
         public UserRepository(EfModels.BlueditContext context, ILogger<UserRepository> logger, IMapper mapper) : base(context, logger, mapper)
         {
-        }
+		}
+		public async Task<Dbo.User> GetByNameAsync(string name)
+		{
+			throw new NotImplementedException();
+		}
 
-    }
+	}
 }

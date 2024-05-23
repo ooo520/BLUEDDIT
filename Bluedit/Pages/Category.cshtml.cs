@@ -28,7 +28,8 @@ namespace Bluedit.Pages
 			Debug.WriteLine(CategoryName);
 
 			// TODO: pagination ?
-			Threads = (await _threadRepository.Read()).ToList();
+			//Threads = (await _threadRepository.Read()).ToList();
+			Threads = [];
 
 			return Page();
 		}

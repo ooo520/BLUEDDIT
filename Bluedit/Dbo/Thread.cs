@@ -9,6 +9,7 @@
         public long CategoryId { get; set; }
 
         public long RootAnswerId { get; set; }
+        public Answer RootAnswer { get; set; } = null!;
 
     }
 }
