@@ -40,8 +40,17 @@ namespace bluedit.DataAccess
 		}
 		public Dbo.Thread? GetById(long id)
 		{
-			// TODO: why is thread nullable here?
-			return _mapper.Map<Dbo.Thread>(_context.Threads.FirstOrDefault(thread => thread.Id == id, null));
+			EfModels.Thread? thread = _context.Threads.FirstOrDefault(thread => thread.Id == id);
+			if (thread == null)
+			{
+				return null;
+			}
+			return _mapper.Map<Dbo.Thread>(thread);
+		}
+
+		public long GetAnswerCountForThread(long threadId)
+		{
+			return _context.Answers.Where(answer => answer.ThreadId == threadId).Count() - 1;
 		}
 	}
 }
