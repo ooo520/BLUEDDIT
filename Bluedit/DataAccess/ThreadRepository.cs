@@ -25,7 +25,7 @@ namespace bluedit.DataAccess
 				if (options.sort == ThreadSort.NEW)
 				{
 					threads = threads
-						.OrderBy(thread => thread.Answers
+						.OrderBy(thread => _context.Answers.Where(a => a.ThreadId == thread.Id) // thread.Answers
 							.OrderBy(b => b.CreationDate)
 							.First().CreationDate
 						);
@@ -40,8 +40,8 @@ namespace bluedit.DataAccess
 		}
 		public Dbo.Thread? GetById(long id)
 		{
-			// TODO: why is thread nullable here?
-			return _mapper.Map<Dbo.Thread>(_context.Threads.FirstOrDefault(thread => thread.Id == id, null));
-		}
+            var result = _context.Threads.FirstOrDefault(thread => thread.Id == id);
+            return _mapper.Map<Dbo.Thread>(result);
+        }
 	}
 }

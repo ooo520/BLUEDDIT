@@ -6,6 +6,7 @@
 
 <div class="root-answer">
 	<h1>@Model.Thread.Title</h1>
+	@* get first comment *@
 </div>
 
 <textarea placeholder="Ecrivez un commentaire..."></textarea>
@@ -20,6 +21,7 @@
 </div> *@
 
 <div class="answers">
+	@* get all but skip first comment *@
 	@foreach (bluedit.Dbo.Answer Answer in Model.Answers) {
 		<div class="answer">
 			<div>@Answer.User.Name</div>

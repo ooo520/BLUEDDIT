@@ -9,7 +9,7 @@ namespace bluedit.Pages
 
 		[BindProperty(SupportsGet = true)]
 		public string? CategoryName { get; set; }
-		[BindProperty]
+		[BindProperty(SupportsGet = true)]
 		public long ThreadId { get; set; }
 		public Dbo.Thread? Thread { get; set; }
 
@@ -30,6 +30,7 @@ namespace bluedit.Pages
 
 		public async Task<IActionResult> OnGetAsync()
         {
+			// check thread is in category
 			if (ThreadId == null)
 			{
 				return NotFound();
