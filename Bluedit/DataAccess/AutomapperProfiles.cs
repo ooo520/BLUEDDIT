@@ -10,8 +10,12 @@ namespace bluedit.DataAccess
     {
         public AutomapperProfiles()
         {
-            CreateMap<EfModels.Answer, Dbo.Answer>();
-            CreateMap<Dbo.Answer, EfModels.Answer>();
+			// TODO: DoNotAllowNull is a temporary fix while we figure out how to map
+            // nested items...
+			CreateMap<EfModels.Answer, Dbo.Answer>()
+				.ForMember(pts => pts.User, opt => opt.DoNotAllowNull());
+			CreateMap<Dbo.Answer, EfModels.Answer>()  
+				.ForMember(pts => pts.User, opt => opt.DoNotAllowNull());
 
             CreateMap<EfModels.Category, Dbo.Category>();
             CreateMap<Dbo.Category, EfModels.Category>();

@@ -20,7 +20,7 @@ create table [user]
         constraint PK_user
             primary key,
     name         varchar(32)                              not null,
-    password     varchar(32)                              not null,
+    password     varchar(50)                              not null,
     description  varchar(256)                             not null,
     creationDate datetime
         constraint DF_user_creationDate default getdate() not null,
@@ -72,61 +72,69 @@ create table opinion
 )
 go
 
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'epita', N'Epita');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'france', N'France');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'tetris', N'Tetris');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'animanga', N'Anime/Manga');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'minecraft', N'Minecraft');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'dotnet', N'.NET');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'bluedit', N'bluedit');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'demineur', N'Démineur');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'nourriture', N'Nourriture');
-INSERT INTO bluedit.dbo.category (name, title) VALUES (N'pokemon', N'Pokémon');
+INSERT INTO bluedit.dbo.category (name, title) VALUES
+(N'epita', N'Epita'),
+(N'france', N'France'),
+(N'tetris', N'Tetris'),
+(N'animanga', N'Anime/Manga'),
+(N'minecraft', N'Minecraft'),
+(N'dotnet', N'.NET'),
+(N'bluedit', N'bluedit'),
+(N'demineur', N'Démineur'),
+(N'nourriture', N'Nourriture'),
+(N'pokemon', N'Pokémon');
 
-INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Dylan', N'password', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan@tutanota.fr');
-INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Leo', N'password', N'Dark Mage', N'2024-05-24 10:09:57.623', N'leo@epitech.fr');
-INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Lea', N'password', N'White Mage', N'2024-05-24 10:09:57.630', N'lea@uwu.fr');
-INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Quentin', N'password', N'Connoisseur', N'2024-05-24 10:09:57.640', N'quentin@42.fr');
+INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES
+(N'Dylan', N'password', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan.toledano@epita.fr'),
+(N'Leo', N'password', N'Dark Mage', N'2024-05-24 10:09:57.623', N'leo@epitech.fr'),
+(N'Lea', N'password', N'White Mage', N'2024-05-24 10:09:57.630', N'lea@uwu.fr'),
+(N'Quentin', N'password', N'Connoisseur', N'2024-05-24 10:09:57.640', N'quentin@42.fr');
 
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'MTI', 1);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Vie', 1);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'PFEE', 1);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'JO 2024', 2);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Paris', 2);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'A mon signal', 2);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Je n''arrive pas à m''améliorer sur le jeu', 3);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'WR', 3);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Modes de jeux', 3);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'One piece', 4);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Crunchyroll', 4);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'UwU', 4);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Nouveauté', 5);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Mode de jeux', 5);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Faction', 5);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Microsoft', 6);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Test', 6);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Smartlinks', 6);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Nouveauté', 7);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Poste du jour', 7);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Tribunal', 7);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Bug', 8);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'WR', 8);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Stratégie', 8);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Marocaine', 9);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Fruit', 9);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Vegan', 9);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'ZA', 10);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Tier list', 10);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Pikachu', 10);
+INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES
+ (N'MTI', 1),
+ (N'Vie', 1),
+ (N'PFEE', 1),
+ (N'JO 2024', 2),
+ (N'Paris', 2),
+ (N'A mon signal', 2),
+ (N'Je n''arrive pas à m''améliorer sur le jeu', 3),
+ (N'WR', 3),
+ (N'Modes de jeux', 3),
+ (N'One piece', 4),
+ (N'Crunchyroll', 4),
+ (N'UwU', 4),
+ (N'Nouveauté', 5),
+ (N'Mode de jeux', 5),
+ (N'Faction', 5),
+ (N'Microsoft', 6),
+ (N'Test', 6),
+ (N'Smartlinks', 6),
+ (N'Nouveauté', 7),
+ (N'Poste du jour', 7),
+ (N'Tribunal', 7),
+ (N'Bug', 8),
+ (N'WR', 8),
+ (N'Stratégie', 8),
+ (N'Marocaine', 9),
+ (N'Fruit', 9),
+ (N'Vegan', 9),
+ (N'ZA', 10),
+ (N'Tier list', 10),
+ (N'Pikachu', 10);
 
-INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES (N'La meilleure majeure !', 3, 1, N'2024-05-24 13:05:47.667');
-INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES (N'Je ne suis pas d''accord.', 1, 1, N'2024-05-24 13:10:29.893');
-INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES (N'First', 4, 1, N'2024-05-24 13:13:35.780');
-INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES (N'c faut tu est deuxieme', 2, 1, N'2024-05-24 13:15:53.060');
+INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES
+(N'La meilleure majeure !', 3, 1, N'2024-05-24 13:05:47.667'),
+(N'Je ne suis pas d''accord.', 1, 1, N'2024-05-24 13:10:29.893'),
+(N'First', 4, 1, N'2024-05-24 13:13:35.780'),
+(N'c faut tu est deuxieme', 2, 1, N'2024-05-24 13:15:53.060'),
+(N'J''adore le tatou !', 1, 13,	N'2024-05-24 13:44:41.623'),
+(N'Vous préférez quoi entre mini-jeux, faction et SkyBlock ?', 2, 14, N'2024-05-24 13:45:54.640'),
+(N'Je vous le dis tout de suite: vous n''avez aucune chance...', 3,	15,	N'2024-05-24 13:15:53.060');
 
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (1, 0, 1);
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (1, 1, 2);
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (1, 1, 3);
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (1, 1, 4);
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (3, 0, 2);
-INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES (4, 1, 1);
+INSERT INTO bluedit.dbo.opinion (answerId, [like], authorId) VALUES
+(1, 0, 1),
+(1, 1, 2),
+(1, 1, 3),
+(1, 1, 4),
+(3, 0, 2),
+(4, 1, 1);

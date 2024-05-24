@@ -36,12 +36,21 @@ namespace bluedit.DataAccess
 				}
 			}
 
-			return _mapper.Map<List<Dbo.Thread>>(threads);
+			return _mapper.Map<List<Dbo.Thread>>(threads.ToList());
 		}
 		public Dbo.Thread? GetById(long id)
 		{
-            var result = _context.Threads.FirstOrDefault(thread => thread.Id == id);
-            return _mapper.Map<Dbo.Thread>(result);
-        }
+			EfModels.Thread? thread = _context.Threads.FirstOrDefault(thread => thread.Id == id);
+			if (thread == null)
+			{
+				return null;
+			}
+			return _mapper.Map<Dbo.Thread>(thread);
+		}
+
+		public long GetAnswerCountForThread(long threadId)
+		{
+			return _context.Answers.Where(answer => answer.ThreadId == threadId).Count() - 1;
+		}
 	}
 }
