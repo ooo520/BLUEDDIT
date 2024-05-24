@@ -14,5 +14,6 @@ namespace Bluedit.Dbo
         public long ThreadId { get; set; }
 
         public DateTime CreationDate { get; set; }
+        public User User { get; set; } = null!;
     }
 }

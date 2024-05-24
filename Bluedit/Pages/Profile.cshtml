@@ -1,0 +1,12 @@
+﻿@page "/u/{UserName}"
+@model Bluedit.Pages.ProfileModel
+@{
+
+}
+
+<h1>@Model.UserName</h1>
+<p>@Model.Blueditor.CreationDate.ToLongDateString()</p>
+<p>@Model.Blueditor.Description</p>
+
+<!-- Only display if current user -->
+<button>Disconnect</button>

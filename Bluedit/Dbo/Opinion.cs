@@ -1,6 +1,6 @@
 ﻿namespace Bluedit.Dbo
 {
-    public class Opinion
+    public class Opinion : IObjectWithId
     {
         public long Id { get; set; }
 
