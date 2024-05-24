@@ -20,7 +20,7 @@ create table [user]
         constraint PK_user
             primary key,
     name         varchar(32)                              not null,
-    password     varchar(32)                              not null,
+    password     varchar(50)                              not null,
     description  varchar(256)                             not null,
     creationDate datetime
         constraint DF_user_creationDate default getdate() not null,
