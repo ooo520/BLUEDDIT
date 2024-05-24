@@ -11,7 +11,7 @@ namespace Bluedit.DataAccess
 		Repository<EfModels.Thread, Dbo.Thread>(context, logger, mapper),
 		IThreadRepository
 	{
-		public ICollection<Dbo.Thread> GetThreadsByCategory(long categoryId, GetThreadsOptions? options)
+		public ICollection<Dbo.Thread> GetByCategory(long categoryId, GetThreadsOptions? options = null)
 		{
 			IQueryable<EfModels.Thread> threads = _context.Threads.Where(thread => thread.CategoryId == categoryId);
 
