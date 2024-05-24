@@ -19,7 +19,8 @@ create table [user]
     id           bigint identity
         constraint PK_user
             primary key,
-    name         varchar(32)                              not null,
+    name         varchar(32)
+	constraint UK_user_name UNIQUE			  not null,
     password     varchar(32)                              not null,
     description  varchar(256)                             not null,
     creationDate datetime
@@ -94,7 +95,7 @@ INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'PFEE', 1);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'JO 2024', 2);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Paris', 2);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'A mon signal', 2);
-INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Je n''arrive pas à m''améliorer sur le jeu', 3);
+INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Comment s''améliorer sur le jeu', 3);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'WR', 3);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'Modes de jeux', 3);
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES (N'One piece', 4);
