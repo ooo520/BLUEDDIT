@@ -15,9 +15,9 @@ namespace bluedit.Pages
 
 		public Dictionary<long, Dbo.Answer> ThreadIdToRootAnswerMap { get; set; } = new();
 
-		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
-		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
-		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
+		public readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
+		public readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
+		public readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 
 		public CategoryModel(
 			DataAccess.Interfaces.IAnswerRepository answerRepository,
