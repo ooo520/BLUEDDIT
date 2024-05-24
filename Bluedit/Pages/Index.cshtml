@@ -25,8 +25,8 @@
         <div class="row">
             @foreach (var category in Model.categories)
             {
-                <div class="col-md-4 d-flex justify-content-center mb-3">
-                    <div class="category-card card">
+                <div>
+                    <div class="category-card">
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="/b/@Html.DisplayFor(modelItem => category.Name)">
