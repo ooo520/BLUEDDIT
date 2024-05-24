@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluedit", "Bluedit\Bluedit.csproj", "{B180A473-457A-473C-B746-9EB0CED7E42D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bluedit", "Bluedit\bluedit.csproj", "{B180A473-457A-473C-B746-9EB0CED7E42D}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Db_Bluedit", "Db_bluedit\Db_Bluedit.sqlproj", "{B60A8DBC-AF03-4C32-842E-500864D58B55}"
 EndProject
