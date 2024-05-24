@@ -46,7 +46,8 @@
 		font-weight: bold;
 	}
 
-	.opinions {
+	.opinions,
+	.thread-answer-count{
 		display: flex;
 		flex-direction: row;
 		border-radius: 3rem;
@@ -75,6 +76,9 @@
 		<div class="threads-list">
 			@foreach (var Thread in Model.Threads)
 			{
+				// TODO: a view might be more appropriate
+				long answerCount = Model._threadRepository.GetAnswerCountForThread(Thread.Id);
+
 				<div class="thread">
 					<div class="thread-top-info">
 						<a href="/u/@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name">
@@ -96,6 +100,7 @@
 							<div>D</div>
 						</div>
 						<div class="thread-answer-count">
+							@answerCount
 						</div>
 					</div>
 				</div>
