@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Bluedit.DataAccess;
 using Bluedit.DataAccess.Interfaces;
@@ -24,6 +25,18 @@ namespace Bluedit
             builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IThreadRepository, Bluedit.DataAccess.ThreadRepository>();
             builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IUserRepository, Bluedit.DataAccess.UserRepository>();
 
+            builder.Services.AddEntityFrameworkSqlServer()
+                        .AddDbContext<Bluedit.DataAccess.EfModels.BlueditContext>(options => options.UseSqlServer("name=ConnectionStrings:Bluedit"));
+
+            builder.Services.AddAutoMapper(typeof(Bluedit.DataAccess.AutomapperProfiles));
+            builder.Services.AddRazorPages().AddRazorPagesOptions(o =>
+            {
+                o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+            });
+            builder.Services.AddControllers();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.ICategoryRepository, Bluedit.DataAccess.CategoryRepository>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -47,53 +60,6 @@ namespace Bluedit
 
             app.MapRazorPages();
 
-            app.Run();
-
-            // --------------------------------------------------------------------------------------------------
-            /*
-            ILoggerFactory loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
-            ILogger logger = loggerFactory.CreateLogger("Program");
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<DataAccess.AutomapperProfiles>();
-            });
-
-            var mapper = config.CreateMapper();
-            var repo = new DataAccess.CategoryRepository(new DataAccess.EfModels.BlueditContext(), logger, mapper);
-
-            repo.Create(new Dbo.Shortcut() { Url = "http://localhost:8080", Hash = "000000000", SessionId = 1 }).Wait();
-            var T = repo.Read();
-            T.Wait();
-            Dbo.Shortcut shortcut = T.Result.First();
-            Console.WriteLine(shortcut.Url + shortcut.Id);
-            shortcut.Url = "http://localhost:8000";
-            shortcut = repo.Update(shortcut).Result;
-            Console.WriteLine(shortcut.Url + shortcut.Id);
-
-            repo.Delete(2).Wait();
-            */
-
-            ILogger<CategoryRepository> logger = app.Services.GetRequiredService<ILogger<CategoryRepository>>();
-
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile<DataAccess.AutomapperProfiles>();
-            });
-
-            var mapper = config.CreateMapper();
-            var repo = new DataAccess.CategoryRepository(new DataAccess.EfModels.BlueditContext(), logger, mapper);
-
-            //repo.Create(new Dbo.Category() { Name = "dhxlcdvkmlcvfjkclsmvfkjl", Title = "kjdfhsldckksdkfsl" }).Wait();
-            //var T = repo.Read();
-            // Dbo.Category shortcut = T.Result.First();
-            //T.Wait();
-            //Console.WriteLine(shortcut.Title + shortcut.Id);
-            //shortcut.Title = "Un titre";
-            //shortcut = repo.Update(shortcut).Result;
-            //Console.WriteLine(shortcut.Title + shortcut.Id);
-
-            //repo.Delete(shortcut.Id).Wait();
             app.Run();
         }
     }

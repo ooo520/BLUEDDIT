@@ -1,0 +1,27 @@
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql-server-container
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint:
+      - /entrypoint.sh
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD=Imnotweakok?
+    ports:
+      - "1432:1433"
+
+  bluedit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bluedit-container
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - sql-server
+    ports:
+      - "8080:8080"
+      - "32768:32769"
