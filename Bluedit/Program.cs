@@ -14,16 +14,6 @@ namespace Bluedit
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddEntityFrameworkSqlServer()
-                        .AddDbContext<Bluedit.DataAccess.EfModels.BlueditContext>(options => options.UseSqlServer("name=ConnectionStrings:Bluedit"));
-            builder.Services.AddAutoMapper(typeof(Bluedit.DataAccess.AutomapperProfiles));
-            builder.Services.AddRazorPages();
-            builder.Services.AddControllers();
-            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IAnswerRepository, Bluedit.DataAccess.AnswerRepository>();
-            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.ICategoryRepository, Bluedit.DataAccess.CategoryRepository>();
-            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IOpinionRepository, Bluedit.DataAccess.OpinionRepository>();
-            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IThreadRepository, Bluedit.DataAccess.ThreadRepository>();
-            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IUserRepository, Bluedit.DataAccess.UserRepository>();
 
             builder.Services.AddEntityFrameworkSqlServer()
                         .AddDbContext<Bluedit.DataAccess.EfModels.BlueditContext>(options => options.UseSqlServer("name=ConnectionStrings:Bluedit"));
@@ -34,7 +24,11 @@ namespace Bluedit
                 o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
             });
             builder.Services.AddControllers();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IAnswerRepository, Bluedit.DataAccess.AnswerRepository>();
             builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.ICategoryRepository, Bluedit.DataAccess.CategoryRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IOpinionRepository, Bluedit.DataAccess.OpinionRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IThreadRepository, Bluedit.DataAccess.ThreadRepository>();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.IUserRepository, Bluedit.DataAccess.UserRepository>();
 
 
             var app = builder.Build();
