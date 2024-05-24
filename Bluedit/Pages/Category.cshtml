@@ -75,34 +75,34 @@
 		<div class="threads-list">
 			@foreach (var Thread in Model.Threads)
 			{
-				<a asp-page="/b/@Model.CategoryName/@Thread.RootAnswerId">
-					<div class="thread">
-						<div class="thread-top-info">
-							<a asp-page="/u/@Thread.RootAnswer.User.Name">
-								@Thread.RootAnswer.User.Name
-							</a>
-							<span>@(" - ")</span>
-							<span>@Thread.RootAnswer.CreationDate.ToLongDateString()</span>
-						</div>
+				<div class="thread">
+					<div class="thread-top-info">
+						<a href="/u/@Thread.RootAnswer.User.Name">
+							@Thread.RootAnswer.User.Name
+						</a>
+						<span>@(" - ")</span>
+						<span>@Thread.RootAnswer.CreationDate.ToLongDateString()</span>
+					</div>
+					<a href="/b/@Model.CategoryName/t/@Thread.Id">
 						<h2>@Thread.Title</h2>
-						<p>
-							@Thread.RootAnswer.Content
-						</p>
-						<div class="thread-bottom-info">
-							<div class="opinions">
-								<div>U</div>
-								<div>X</div>
-								<div>D</div>
-							</div>
-							<div class="thread-answer-count">
-							</div>
+					</a>
+					<p>
+						@Thread.RootAnswer.Content
+					</p>
+					<div class="thread-bottom-info">
+						<div class="opinions">
+							<div>U</div>
+							<div>X</div>
+							<div>D</div>
+						</div>
+						<div class="thread-answer-count">
 						</div>
 					</div>
-					@if (Thread != Model.Threads.Last())
-					{
-						<hr />
-					}
-				</a>
+				</div>
+				@if (Thread != Model.Threads.Last())
+				{
+					<hr />
+				}
 			}
 		</div>
 	</div>
