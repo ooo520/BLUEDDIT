@@ -1,6 +1,20 @@
 ﻿namespace Bluedit.DataAccess.Interfaces
 {
+	public enum ThreadSort
+	{
+		NEW,
+		TOP
+	}
+
+	public class GetThreadsOptions
+	{
+		public ThreadSort sort = ThreadSort.NEW;
+		public String? titleFilter;
+	}
+
     public interface IThreadRepository : IRepository<EfModels.Thread, Dbo.Thread>
     {
-    }
+		public ICollection<Dbo.Thread> GetThreadsByCategory(long categoryId, GetThreadsOptions? options);
+
+	}
 }
