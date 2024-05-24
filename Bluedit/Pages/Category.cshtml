@@ -2,35 +2,108 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model Bluedit.Pages.CategoryModel
 @{
+
 }
 
 <style>
-	.threads {
+	main {
+		display: grid;
+	}
+
+	.category-header {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	h1 {
+		font-weight: bold;
+	}
+
+	.thread {
+		border-radius: 5px;
+		padding: 5px;
+	}
+
+		.thread:hover {
+			cursor: pointer;
+			background-color: rgb(237, 248, 250);
+		}
+
+	.thread-list {
 		background-color: red;
+	}
+
+	.thread-top-info,
+	.thread-bottom-info {
+		display: flex;
+	}
+
+	.thread-bottom-info {
+		column-gap: 10px;
+	}
+
+	.sorted-by {
+		font-weight: bold;
+	}
+
+	.opinions {
+		display: flex;
+		flex-direction: row;
+		border-radius: 3rem;
+		background-color: rgb(209, 236, 240);
+		width: fit-content;
+		padding: 5px;
+		column-gap: 5px;
 	}
 </style>
 
-<div class="threads">
-	nice !!!!
-	@foreach(var Thread in Model.Threads) {
-		<a asp-page="/b/@Model.CategoryName/@Thread.RootAnswerId">
-		<div>
-			<h2>@Thread.Title</h2>
-			<!-- TODO: link -->
-			<div><div>@Thread.RootAnswer.User.Name</div><div>@Thread.RootAnswer.CreationDate.ToLongDateString()</div></div>
-			<p>
-				@Thread.RootAnswer.Content
-			</p>
-			<div>
-				<div>Upvote </div>
-				<div>Count </div>
-				<div>Downvote </div>
-			</div>
+<main>
+	<div class="category-header" grid-area="header">
+		<h1>@Model.CategoryName</h1>
+		<a href="/b/@Model.CategoryName/new">Créer un fil de discussion</a>
+	</div>
+
+	<div class="options">
+		<!-- Trié par -->
+		<!-- <span class="sorted-by">Nouveautés</span>-->
+		<select>
+			<option>Nouveautés</option>
+			<option>Top</option>
+		</select>
+	</div>
+	<div class="threads-container" grid-area="threads">
+		<div class="threads-list">
+			@foreach (var Thread in Model.Threads)
+			{
+				<div class="thread">
+					<div class="thread-top-info">
+						<a href="/u/@Thread.RootAnswer.User.Name">
+							@Thread.RootAnswer.User.Name
+						</a>
+						<span>@(" - ")</span>
+						<span>@Thread.RootAnswer.CreationDate.ToLongDateString()</span>
+					</div>
+					<a href="/b/@Model.CategoryName/t/@Thread.Id">
+						<h2>@Thread.Title</h2>
+					</a>
+					<p>
+						@Thread.RootAnswer.Content
+					</p>
+					<div class="thread-bottom-info">
+						<div class="opinions">
+							<div>U</div>
+							<div>X</div>
+							<div>D</div>
+						</div>
+						<div class="thread-answer-count">
+						</div>
+					</div>
+				</div>
+				@if (Thread != Model.Threads.Last())
+				{
+					<hr />
+				}
+			}
 		</div>
-		@if (Thread != Model.Threads.Last())
-		{
-			<hr />
-		}
-		</a>
-	}
-</div>
+	</div>
+</main>

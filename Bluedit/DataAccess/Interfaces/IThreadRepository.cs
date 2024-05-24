@@ -14,6 +14,7 @@
 
     public interface IThreadRepository : IRepository<EfModels.Thread, Dbo.Thread>
     {
+		public Dbo.Thread GetById(long id);
 		public ICollection<Dbo.Thread> GetByCategory(long categoryId, GetThreadsOptions? options);
 
 	}
