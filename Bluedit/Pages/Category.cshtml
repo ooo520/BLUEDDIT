@@ -76,19 +76,19 @@
 			@foreach (var Thread in Model.Threads)
 			{
 				<div class="thread">
-					@* <div class="thread-top-info">
-						<a href="/u/@Thread.RootAnswer.User.Name">
-							@Thread.RootAnswer.User.Name
+					<div class="thread-top-info">
+						<a href="/u/@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name">
+							@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name
 						</a>
 						<span>@(" - ")</span>
-						<span>@Thread.RootAnswer.CreationDate.ToLongDateString()</span>
+						<span>@Model.ThreadIdToRootAnswerMap[Thread.Id].CreationDate.ToLongDateString()</span>
 					</div>
 					<a href="/b/@Model.CategoryName/t/@Thread.Id">
 						<h2>@Thread.Title</h2>
 					</a>
 					<p>
-						@Thread.RootAnswer.Content
-					</p> *@
+						@Model.ThreadIdToRootAnswerMap[Thread.Id].Content
+					</p>
 					<div class="thread-bottom-info">
 						<div class="opinions">
 							<div>U</div>
