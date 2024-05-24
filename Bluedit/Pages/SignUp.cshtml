@@ -1,0 +1,29 @@
+﻿@page "/signup"
+@model Bluedit.Pages.SignUpModel
+@{
+}
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+	}
+
+	.submit-button {
+		align-self: flex-end;
+	}
+
+	.text-input {
+		padding: 10px;
+	}
+</style>
+
+<h1>Inscrivez-vous !</h1>
+
+<form method="post">
+	<input class="text-input" type="text" placeholder="Nom d'utilisateur'" /> <!-- asp-for="title" -->
+	<textarea rows="4" placeholder="Corps" class="text-input"></textarea> <!-- asp-for="content" -->
+	<input type="submit" class="submit-button" value="S'inscrire'" />
+	<div>Déjà inscris ? <a href="/login">Connectez-vous !</a></div>
+</form>
