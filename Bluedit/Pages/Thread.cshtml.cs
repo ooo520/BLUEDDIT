@@ -5,13 +5,12 @@ namespace bluedit.Pages
 {
     public class ThreadModel : PageModel
     {
-        public ICollection<Dbo.Answer> Answers { get; set; }
 
 		[BindProperty(SupportsGet = true)]
 		public string? CategoryName { get; set; }
-		[BindProperty]
+		[BindProperty(SupportsGet = true)]
 		public long ThreadId { get; set; }
-		public Dbo.Thread? Thread { get; set; }
+		public Dbo.Thread Thread { get; set; }
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
@@ -31,8 +30,14 @@ namespace bluedit.Pages
 			{
 				return NotFound();
 			}
+			Console.WriteLine(CategoryName);
+			Console.WriteLine(ThreadId);
 			Thread = _threadRepository.GetById(ThreadId);
-			Answers = _answerRepository.GetByThread(ThreadId);
+			if (Thread == null)
+			{
+				return NotFound();
+			}
+
 			return Page();
         }
     }

@@ -38,10 +38,10 @@ namespace bluedit.DataAccess
 
 			return _mapper.Map<List<Dbo.Thread>>(threads);
 		}
-		public Dbo.Thread? GetById(long id)
+		public Dbo.Thread GetById(long id)
 		{
-			// TODO: why is thread nullable here?
-			return _mapper.Map<Dbo.Thread>(_context.Threads.FirstOrDefault(thread => thread.Id == id, null));
-		}
+			var result = _context.Threads.FirstOrDefault(thread => thread.Id == id);
+			return _mapper.Map<Dbo.Thread>(result);
+        }
 	}
 }

@@ -5,14 +5,14 @@
 }
 
 <div class="root-answer">
-	<h1>@Model.Thread.Title</h1>
+	<h1>@Model.Thread?.Title</h1>
 </div>
 
 <textarea placeholder="Ecrivez un commentaire..."></textarea>
 <input type="submit" value="Commenter" />
 
 <div class="answers">
-	@foreach (var Answer in Model.Answers) {
+	@foreach (bluedit.Dbo.Answer Answer in Model.Thread.Answers) {
 		<div class="answer">
 			<div>@Answer.User.Name</div>
 			<div>@Answer.Content</div>
