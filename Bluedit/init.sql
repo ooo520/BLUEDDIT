@@ -83,7 +83,7 @@ INSERT INTO bluedit.dbo.category (name, title) VALUES (N'demineur', N'Démineur'
 INSERT INTO bluedit.dbo.category (name, title) VALUES (N'nourriture', N'Nourriture');
 INSERT INTO bluedit.dbo.category (name, title) VALUES (N'pokemon', N'Pokémon');
 
-INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Dylan', N'password', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan@tutanota.fr');
+INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Dylan', N'password', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan.toledano@epita.fr');
 INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Leo', N'password', N'Dark Mage', N'2024-05-24 10:09:57.623', N'leo@epitech.fr');
 INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Lea', N'password', N'White Mage', N'2024-05-24 10:09:57.630', N'lea@uwu.fr');
 INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES (N'Quentin', N'password', N'Connoisseur', N'2024-05-24 10:09:57.640', N'quentin@42.fr');
