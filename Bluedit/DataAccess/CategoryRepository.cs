@@ -9,9 +9,14 @@ namespace Bluedit.DataAccess
         {
         }
 
+        public Category? GetByName(string name)
+        {
+			return _mapper.Map<Category>(_context.Categories.FirstOrDefault(x => x.Title == name), null);
+		}
+
         public List<Category> GetCategories(string title)
         {
-            return _mapper.Map<List<Dbo.Category>>(_context.Categories.Where(x=> x.Title == title).ToList());
+            return _mapper.Map<List<Category>>(_context.Categories.Where(x=> x.Title == title).ToList());
         }
     }
 }
