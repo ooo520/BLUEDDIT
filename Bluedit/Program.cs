@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 namespace Bluedit
 {
     public class Program
@@ -8,6 +11,18 @@ namespace Bluedit
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddEntityFrameworkSqlServer()
+                        .AddDbContext<Bluedit.DataAccess.EfModels.BlueditContext>(options => options.UseSqlServer("name=ConnectionStrings:Bluedit"));
+
+            builder.Services.AddAutoMapper(typeof(Bluedit.DataAccess.AutomapperProfiles));
+            builder.Services.AddRazorPages().AddRazorPagesOptions(o =>
+            {
+                o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+            });
+            builder.Services.AddControllers();
+            builder.Services.AddTransient<Bluedit.DataAccess.Interfaces.ICategoryRepository, Bluedit.DataAccess.CategoryRepository>();
+
 
             var app = builder.Build();
 
@@ -25,6 +40,8 @@ namespace Bluedit
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }

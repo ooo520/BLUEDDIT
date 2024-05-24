@@ -1,0 +1,18 @@
+﻿@page
+@model Bluedit.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    It's me, Dylan
+    @foreach (var category in Model.categories)
+    {
+        @* <a asp-controller="Category" asp-action="Index"> *@
+            <div>
+                @Html.DisplayFor(modelItem => category.Title)
+            </div>
+        @* </a> *@
+    }
+</div>
