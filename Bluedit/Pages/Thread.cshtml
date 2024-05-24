@@ -11,11 +11,20 @@
 <textarea placeholder="Ecrivez un commentaire..."></textarea>
 <input type="submit" value="Commenter" />
 
+@* <div>
+	Title: @Model.Thread.Title
+	<br />
+	Category: @Model.CategoryName
+	<br />
+	Answers length: @Model.Answers.Count
+</div> *@
+
 <div class="answers">
-	@foreach (var Answer in Model.Answers) {
+	@foreach (bluedit.Dbo.Answer Answer in Model.Answers) {
 		<div class="answer">
 			<div>@Answer.User.Name</div>
 			<div>@Answer.Content</div>
+			<hr />
 		</div>
 	}
 </div>

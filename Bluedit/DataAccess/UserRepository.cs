@@ -9,14 +9,24 @@ namespace bluedit.DataAccess
         {
 		}
 		public Dbo.User? GetByName(string name)
-		{
-			EfModels.User? user = _context.Users.FirstOrDefault(x => x.Name == name);
-			if (user == null)
-			{
-				return null;
-			}
-			return _mapper.Map<Dbo.User>(user);
-		}
+        {
+            EfModels.User? user = _context.Users.FirstOrDefault(x => x.Name == name);
+            if (user == null)
+            {
+                return null;
+            }
+            return _mapper.Map<Dbo.User>(user);
+        }
+
+        public Dbo.User? GetById(long id)
+        {
+            EfModels.User? user = _context.Users.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+            {
+                return null;
+            }
+            return _mapper.Map<Dbo.User>(user);
+        }
 
 	}
 }
