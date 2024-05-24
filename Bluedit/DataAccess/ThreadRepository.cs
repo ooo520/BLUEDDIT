@@ -36,7 +36,7 @@ namespace bluedit.DataAccess
 				}
 			}
 
-			return _mapper.Map<List<Dbo.Thread>>(threads);
+			return _mapper.Map<List<Dbo.Thread>>(threads.ToList());
 		}
 		public Dbo.Thread? GetById(long id)
 		{
