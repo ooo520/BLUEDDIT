@@ -16,6 +16,7 @@
     {
 		public Dbo.Thread GetById(long id);
 		public ICollection<Dbo.Thread> GetByCategory(long categoryId, GetThreadsOptions? options);
+		public long GetAnswerCountForThread(long threadId);
 
 	}
 }
