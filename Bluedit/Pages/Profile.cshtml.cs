@@ -21,12 +21,14 @@ namespace bluedit.Pages
                 return BadRequest();
             }
 
-            Dbo.User user = await _userRepository.GetByNameAsync(UserName);
+            Dbo.User user = _userRepository.GetByName(UserName);
 
             if (user == null)
             {
                 return NotFound();
             }
+
+            Blueditor = user;
 
             return Page();
         }

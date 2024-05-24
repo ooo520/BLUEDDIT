@@ -8,9 +8,14 @@ namespace bluedit.DataAccess
         public UserRepository(EfModels.BlueditContext context, ILogger<UserRepository> logger, IMapper mapper) : base(context, logger, mapper)
         {
 		}
-		public async Task<Dbo.User> GetByNameAsync(string name)
+		public Dbo.User? GetByName(string name)
 		{
-			throw new NotImplementedException();
+			EfModels.User? user = _context.Users.FirstOrDefault(x => x.Name == name);
+			if (user == null)
+			{
+				return null;
+			}
+			return _mapper.Map<Dbo.User>(user);
 		}
 
 	}
