@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bluedit.DataAccess.EfModels;
+namespace bluedit.DataAccess.EfModels;
 
 public partial class Answer
 {
@@ -18,8 +18,6 @@ public partial class Answer
     public virtual ICollection<Opinion> Opinions { get; set; } = new List<Opinion>();
 
     public virtual Thread Thread { get; set; } = null!;
-
-    public virtual ICollection<Thread> Threads { get; set; } = new List<Thread>();
 
     public virtual User User { get; set; } = null!;
 }

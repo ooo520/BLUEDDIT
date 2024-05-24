@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
     public interface IRepository<DBEntity, ModelEntity>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bluedit.DataAccess.EfModels;
+namespace bluedit.DataAccess.EfModels;
 
 public partial class Category
 {

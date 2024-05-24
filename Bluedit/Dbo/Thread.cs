@@ -1,4 +1,4 @@
-﻿namespace Bluedit.Dbo
+﻿namespace bluedit.Dbo
 {
     public class Thread : IObjectWithId
     {
@@ -8,8 +8,9 @@
 
         public long CategoryId { get; set; }
 
-        public long RootAnswerId { get; set; }
-        public Answer RootAnswer { get; set; } = null!;
+        public virtual ICollection<Answer> Answers { get; set; } = new List<Answer>();
+
+        public virtual Category Category { get; set; } = null!;
 
     }
 }

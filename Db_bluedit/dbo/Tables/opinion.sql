@@ -4,9 +4,11 @@
     [like]     BIT    NOT NULL,
     [authorId] BIGINT NOT NULL,
     CONSTRAINT [PK_opinion] PRIMARY KEY CLUSTERED ([id] ASC),
-    CONSTRAINT [FK_opinion_answer] FOREIGN KEY ([authorId]) REFERENCES [dbo].[user] ([id]),
-    CONSTRAINT [FK_opinion_answer1] FOREIGN KEY ([answerId]) REFERENCES [dbo].[answer] ([id])
+    CONSTRAINT [FK_opinion_answer] FOREIGN KEY ([answerId]) REFERENCES [dbo].[answer] ([id]),
+    CONSTRAINT [FK_opinion_user] FOREIGN KEY ([authorId]) REFERENCES [dbo].[user] ([id])
 );
+
+
 
 
 

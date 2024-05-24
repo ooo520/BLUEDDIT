@@ -1,8 +1,8 @@
-using Bluedit.Dbo;
+using bluedit.Dbo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Bluedit.Pages
+namespace bluedit.Pages
 {
     public class NewThreadRequest
     {
@@ -68,7 +68,7 @@ namespace Bluedit.Pages
 				CreationDate = DateTime.Now,
 				Thread = newThread
 			};
-			newThread.RootAnswer = rootAnswer;
+			//newThread.RootAnswer = rootAnswer;
 
 			Dbo.Thread createdThread = await _threadRepository.Create(newThread);
 			return RedirectToPage($"/b/{CategoryName}/t/{createdThread.Id}");

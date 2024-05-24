@@ -1,4 +1,4 @@
-﻿namespace Bluedit.Dbo
+﻿namespace bluedit.Dbo
 {
     public class User : IObjectWithId
     {

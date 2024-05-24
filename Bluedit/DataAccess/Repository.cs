@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
     public class Repository<DBEntity, ModelEntity> : IRepository<DBEntity, ModelEntity>
       where DBEntity : class, new()

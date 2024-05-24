@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
     public class UserRepository : Repository<EfModels.User, Dbo.User>, Interfaces.IUserRepository
     {

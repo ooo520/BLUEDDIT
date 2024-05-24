@@ -1,4 +1,4 @@
-﻿namespace Bluedit.DataAccess.Interfaces
+﻿namespace bluedit.DataAccess.Interfaces
 {
 	public interface ICategoryRepository : IRepository<EfModels.Category, Dbo.Category>
 	{

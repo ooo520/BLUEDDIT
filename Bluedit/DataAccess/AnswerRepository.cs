@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
 	public class AnswerRepository : Repository<EfModels.Answer, Dbo.Answer>, Interfaces.IAnswerRepository
 	{

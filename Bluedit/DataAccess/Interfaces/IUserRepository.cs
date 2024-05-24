@@ -1,4 +1,4 @@
-﻿namespace Bluedit.DataAccess.Interfaces
+﻿namespace bluedit.DataAccess.Interfaces
 {
     public interface IUserRepository : IRepository<EfModels.User, Dbo.User>
     {

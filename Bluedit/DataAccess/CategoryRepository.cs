@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Bluedit.Dbo;
+using bluedit.Dbo;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
     public class CategoryRepository : Repository<EfModels.Category, Dbo.Category>, Interfaces.ICategoryRepository
     {
@@ -11,7 +11,13 @@ namespace Bluedit.DataAccess
 
         public Category? GetByName(string name)
         {
-			return _mapper.Map<Category>(_context.Categories.FirstOrDefault(x => x.Title == name), null);
+            var c = _context.Categories.FirstOrDefault(x => x.Name == name);
+            if (c == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<Category>(c);
 		}
 
         public List<Category> GetCategories(string title)

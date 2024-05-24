@@ -1,8 +1,8 @@
-using Bluedit.Models;
+using bluedit.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Bluedit.Controllers
+namespace bluedit.Controllers
 {
     public class HomeController : Controller
     {

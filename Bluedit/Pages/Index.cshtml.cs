@@ -1,9 +1,9 @@
-using Bluedit.DataAccess.Interfaces;
-using Bluedit.Dbo;
+using bluedit.DataAccess.Interfaces;
+using bluedit.Dbo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Bluedit.Pages
+namespace bluedit.Pages
 {
     public class IndexModel : PageModel
     {

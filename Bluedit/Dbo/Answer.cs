@@ -1,7 +1,7 @@
-﻿using Bluedit.DataAccess.EfModels;
+﻿using bluedit.DataAccess.EfModels;
 using System.ComponentModel.DataAnnotations;
 
-namespace Bluedit.Dbo
+namespace bluedit.Dbo
 {
     public class Answer : IObjectWithId
     {

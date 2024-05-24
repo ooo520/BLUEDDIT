@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bluedit.DataAccess.EfModels;
+namespace bluedit.DataAccess.EfModels;
 
 public partial class BlueditContext : DbContext
 {
@@ -30,7 +30,7 @@ public partial class BlueditContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=Bluedit;Trusted_Connection=True");
+            optionsBuilder.UseSqlServer("Data Source=.\\sqlexpress;Initial Catalog=bluedit;Trusted_Connection=True");
         }
     }
 
@@ -40,9 +40,7 @@ public partial class BlueditContext : DbContext
         {
             entity.ToTable("answer");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedNever()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Content)
                 .HasColumnType("text")
                 .HasColumnName("content");
@@ -51,19 +49,17 @@ public partial class BlueditContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("creationDate");
             entity.Property(e => e.ThreadId).HasColumnName("threadId");
-            entity.Property(e => e.UserId)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("userId");
+            entity.Property(e => e.UserId).HasColumnName("userId");
 
             entity.HasOne(d => d.Thread).WithMany(p => p.Answers)
                 .HasForeignKey(d => d.ThreadId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_answer_user");
+                .HasConstraintName("FK_answer_thread");
 
             entity.HasOne(d => d.User).WithMany(p => p.Answers)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_answer_user1");
+                .HasConstraintName("FK_answer_user");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -93,12 +89,12 @@ public partial class BlueditContext : DbContext
             entity.HasOne(d => d.Answer).WithMany(p => p.Opinions)
                 .HasForeignKey(d => d.AnswerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_opinion_answer1");
+                .HasConstraintName("FK_opinion_answer");
 
             entity.HasOne(d => d.Author).WithMany(p => p.Opinions)
                 .HasForeignKey(d => d.AuthorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_opinion_answer");
+                .HasConstraintName("FK_opinion_user");
         });
 
         modelBuilder.Entity<Thread>(entity =>
@@ -107,7 +103,6 @@ public partial class BlueditContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CategoryId).HasColumnName("categoryId");
-            entity.Property(e => e.RootAnswerId).HasColumnName("rootAnswerId");
             entity.Property(e => e.Title)
                 .HasMaxLength(32)
                 .IsUnicode(false)
@@ -117,11 +112,6 @@ public partial class BlueditContext : DbContext
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_thread_category");
-
-            entity.HasOne(d => d.RootAnswer).WithMany(p => p.Threads)
-                .HasForeignKey(d => d.RootAnswerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_thread_answer");
         });
 
         modelBuilder.Entity<User>(entity =>

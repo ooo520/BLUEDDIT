@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Bluedit.Pages
+namespace bluedit.Pages
 {
 
 	public class CategoryModel : PageModel

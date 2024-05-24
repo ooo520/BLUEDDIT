@@ -1,8 +1,8 @@
-using Bluedit.DataAccess.Interfaces;
+using bluedit.DataAccess.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Bluedit.Pages
+namespace bluedit.Pages
 {
     public class ProfileModel : PageModel
     {

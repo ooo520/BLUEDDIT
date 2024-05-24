@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
     public class OpinionRepository : Repository<EfModels.Opinion, Dbo.Opinion>, Interfaces.IOpinionRepository
     {

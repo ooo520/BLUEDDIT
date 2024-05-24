@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Bluedit.DataAccess.Interfaces;
+using bluedit.DataAccess.Interfaces;
 
-namespace Bluedit.DataAccess
+namespace bluedit.DataAccess
 {
 	public class ThreadRepository(
 		EfModels.BlueditContext context,
@@ -24,7 +24,11 @@ namespace Bluedit.DataAccess
 
 				if (options.sort == ThreadSort.NEW)
 				{
-					threads = threads.OrderBy(thread => thread.RootAnswer.CreationDate);
+					threads = threads
+						.OrderBy(thread => thread.Answers
+							.OrderBy(b => b.CreationDate)
+							.First().CreationDate
+						);
 				}
 				else if (options.sort == ThreadSort.TOP)
 				{
