@@ -1,0 +1,26 @@
+﻿@page "/b/{CategoryName}/new"
+@model Bluedit.Pages.NewThreadModel
+@{
+}
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+	}
+	.submit-button {
+		align-self: flex-end;
+	}
+	.text-input {
+		padding: 10px;
+	}
+</style>
+
+<h1>Créer un nouveau fil dans b/@Model.CategoryName</h1>
+
+<form method="post">
+	<input class="text-input" type="text" placeholder="Titre" /> <!-- asp-for="title" -->
+	<textarea rows="4" placeholder="Corps" class="text-input"></textarea> <!-- asp-for="content" -->
+	<input type="submit" class="submit-button" value="Publier" />
+</form>
