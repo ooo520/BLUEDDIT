@@ -36,7 +36,8 @@ namespace bluedit.Pages
         {
             //Console.WriteLine("aaaaaaaaaaaaaa");
             HttpContext.Response.Cookies.Delete("username");
-            return RedirectToPage("/");
+			HttpContext.Response.Cookies.Delete("userpass");
+			return RedirectToPage("/");
         }
     }
 }
