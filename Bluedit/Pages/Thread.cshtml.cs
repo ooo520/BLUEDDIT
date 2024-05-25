@@ -33,10 +33,11 @@ namespace bluedit.Pages
 
 		public async Task<IActionResult> OnGetAsync()
         {
-			if (ThreadId == null)
+			if (!ThreadIsCorrect())
 			{
 				return NotFound();
 			}
+
 			Console.WriteLine(CategoryName);
 			Console.WriteLine(ThreadId);
 			Thread = _threadRepository.GetById(ThreadId);
@@ -50,10 +51,11 @@ namespace bluedit.Pages
 			{
 				return NotFound();
 			}
-			if (category.Name !=  CategoryName)
+			if (category.Name != CategoryName)
 			{
 				return BadRequest();
 			}
+
 			Answers = _answerRepository.GetByThread(ThreadId).OrderBy(a => a.CreationDate).ToList();
 			foreach (var answer in Answers)
 			{
@@ -61,6 +63,58 @@ namespace bluedit.Pages
 			}
 
 			return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var comment = Request.Form["Comment"];
+
+            Console.WriteLine("writing comment '" + comment + "'");
+            Console.WriteLine("in thread " + ThreadId );
+            if (comment == "")
+            {
+                return BadRequest();
+            }
+
+            if (!ThreadIsCorrect())
+            {
+                return NotFound();
+            }
+
+            Dbo.Answer newAnswer = new()
+            {
+                Content = comment,
+                CreationDate = DateTime.Now,
+                ThreadId = ThreadId,
+                UserId = 1 // TODO: get user id
+            };
+            await _answerRepository.Create(newAnswer);
+
+            return Redirect($"/b/{CategoryName}/t/{ThreadId}");
+        }
+
+        private bool ThreadIsCorrect()
+        {
+            if (ThreadId == 0 || CategoryName == "")
+            {
+                return false;
+            }
+            Thread = _threadRepository.GetById(ThreadId);
+            if (Thread == null)
+            {
+                return false;
+            }
+            var category = _categoryRepository.GetById(Thread.CategoryId);
+            if (category == null)
+            {
+                return false;
+            }
+            if (category.Name != CategoryName)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

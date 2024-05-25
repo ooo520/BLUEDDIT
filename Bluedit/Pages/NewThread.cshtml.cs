@@ -49,10 +49,8 @@ namespace bluedit.Pages
 
 			var title = Request.Form["Title"];
 			var content = Request.Form["Content"];
-			Console.WriteLine(title);
-			Console.WriteLine(content);
+
 			if (title == "" || content == "") {
-				Console.WriteLine("TITLE OR CONTENT IS EMPTY AAAAAAAAAAAAAAAA");
 				return BadRequest();
 			}
 

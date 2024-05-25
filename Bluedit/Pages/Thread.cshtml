@@ -10,9 +10,10 @@
 	<div>@Model.Answers.First().Content</div>
 </div>
 
-@* TODO: Handle comment submit *@
-<textarea placeholder="Ecrivez un commentaire..."></textarea>
-<input type="submit" value="Commenter" />
+<form method="post">
+	<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+	<input type="submit" value="Commenter" />
+</form>
 
 @* <div>
 	Title: @Model.Thread.Title
