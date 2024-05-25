@@ -42,6 +42,15 @@ else
 	<div><a href="/signup">Inscrivez-vous</a> ou <a href="/login">connectez-vous</a> pour participer à la discussion !</div>
 }
 
+<div class="options">
+	<!-- Trié par -->
+	<form id="sortingForm" method="get">
+		<div>
+			<label for="sortingSelect">Sort by:</label>
+			<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+		</div>
+	</form>
+</div>
 <div class="answers">
 	@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1)) {
 		<div class="answer">
@@ -61,3 +70,15 @@ else
 		</div>
 	}
 </div>
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const sortingSelect = document.getElementById('sortingSelect');
+			const filterForm = document.getElementById('filterForm');
+
+			sortingSelect.addEventListener('change', function () {
+				filterForm.submit(); // Submit the form when sorting option changes
+			});
+		});
+	</script>
+}

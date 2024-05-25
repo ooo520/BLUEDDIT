@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Web;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace bluedit.Pages
 {
@@ -14,6 +15,16 @@ namespace bluedit.Pages
 		[BindProperty(SupportsGet = true)]
 		public long ThreadId { get; set; }
 		public Dbo.Thread Thread { get; set; }
+
+		public List<SelectListItem> SortOptions { get; } = new List<SelectListItem>
+		{
+			new SelectListItem { Value = "ASC", Text = "Nouveaux" },
+			new SelectListItem { Value = "DESC", Text = "Ancien" },
+			new SelectListItem { Value = "TOP", Text = "Populaire" },
+		};
+
+		[BindProperty(SupportsGet = true)]
+		public string Sorting { get; set; }
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
@@ -43,39 +54,56 @@ namespace bluedit.Pages
 		public string username => _httpContextAccessor.HttpContext.Request.Cookies["username"];
 		public string userpass => _httpContextAccessor.HttpContext.Request.Cookies["userpass"];
 
-		public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-			isLoggedIn = IsLoggedIn();	// so i can get this value in the html
+            isLoggedIn = IsLoggedIn();  // so i can get this value in the html
 
-			if (!ThreadIsCorrect())
-			{
-				return NotFound();
-			}
+            if (!ThreadIsCorrect())
+            {
+                return NotFound();
+            }
 
-			Thread = _threadRepository.GetById(ThreadId);
-			if (Thread == null)
-			{
-				return NotFound();
-			}
+            Thread = _threadRepository.GetById(ThreadId);
+            if (Thread == null)
+            {
+                return NotFound();
+            }
 
-			var category = _categoryRepository.GetById(Thread.CategoryId);
-			if (category == null)
-			{
-				return NotFound();
-			}
-			if (category.Name != CategoryName)
-			{
-				return BadRequest();
-			}
+            var category = _categoryRepository.GetById(Thread.CategoryId);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            if (category.Name != CategoryName)
+            {
+                return BadRequest();
+            }
 
-			Answers = _answerRepository.GetByThread(ThreadId).OrderBy(a => a.CreationDate).ToList();
-			foreach (var answer in Answers)
-			{
-				answer.User = _userRepository.GetById(answer.UserId)!;
-				answer.Likes = _opinionRepository.GetLikesCountForAnswer(answer.Id);
-			}
+            Answers = _answerRepository.GetByThread(ThreadId).OrderBy(a => a.CreationDate).ToList();
+            foreach (var answer in Answers)
+            {
+                answer.User = _userRepository.GetById(answer.UserId)!;
+                answer.Likes = _opinionRepository.GetLikesCountForAnswer(answer.Id);
+            }
 
-			return Page();
+            ICollection<Dbo.Answer> Responses = Answers.Skip(1).ToList();
+            switch (Sorting)
+            {
+                case "ASC":
+                    Responses = Responses.OrderBy((a) => a.CreationDate).ToList();
+                    break;
+                case "DESC":
+                    Responses = Responses.OrderByDescending((a) => a.CreationDate).ToList();
+					break;
+                case "TOP":
+                    Responses = Responses.OrderBy((a) => _opinionRepository.GetLikesCountForAnswer(a.Id)).ToList();
+                    break;
+                default:
+					break;
+            }
+
+            Answers = Responses.Prepend(Answers.First()).ToList();
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()

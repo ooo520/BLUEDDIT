@@ -6,6 +6,6 @@
 
 		public Dbo.Category? GetById(long id);
 
-		List<Dbo.Category> GetCategories(string title);
+		List<Dbo.Category> GetCategories(string search);
 	}
 }
