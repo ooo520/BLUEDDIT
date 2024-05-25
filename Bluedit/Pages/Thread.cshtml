@@ -9,26 +9,48 @@
 	<h1>@Model.Thread.Title</h1>
 	<div>@Model.Answers.First().User.Name</div>
 	<div>@Model.Answers.First().Content</div>
+	<div class="thread-bottom-info">
+		<div class="opinions">
+			<div>U</div>
+			<div>@Model.Answers.First().Likes</div>
+			<div>D</div>
+		</div>
+		<div class="thread-answer-count">
+			@(Model.Answers.Count - 1)
+		</div>
+	</div>
 </div>
 
-<form method="post">
-	<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
-	<input type="submit" value="Commenter" />
-</form>
-
-@* <div>
-	Title: @Model.Thread.Title
-	<br />
-	Category: @Model.CategoryName
-	<br />
-	Answers length: @Model.Answers.Count
-</div> *@
+@if (Model.isLoggedIn)
+{
+	<form method="post">
+		<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+		<input type="submit" value="Commenter" />
+	</form>
+}
+else
+{
+	<a href="/signup">
+		S'inscrire
+	</a>
+	<p>Déjà Blueditor ?</p>
+	<a href="/login" >
+		Se connecter
+	</a>
+}
 
 <div class="answers">
 	@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1)) {
 		<div class="answer">
 			<div>@Answer.User.Name</div>
 			<div>@Answer.Content</div>
+			<div class="thread-bottom-info">
+				<div class="opinions">
+					<div>U</div>
+					<div>@Answer.Likes</div>
+					<div>D</div>
+				</div>
+			</div>
 			<hr />
 		</div>
 	}

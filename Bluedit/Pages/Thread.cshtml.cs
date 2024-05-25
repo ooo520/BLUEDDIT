@@ -17,13 +17,16 @@ namespace bluedit.Pages
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
 		private readonly DataAccess.Interfaces.IUserRepository _userRepository;
 		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
+		private readonly DataAccess.Interfaces.IOpinionRepository _opinionRepository;
 		private readonly IHttpContextAccessor _httpContextAccessor;
+		public bool isLoggedIn = false;
 
 		public ThreadModel(
 			DataAccess.Interfaces.IThreadRepository threadRepository,
 			DataAccess.Interfaces.IAnswerRepository answerRepository,
 			DataAccess.Interfaces.IUserRepository userRepository,
 			DataAccess.Interfaces.ICategoryRepository categoryRepository,
+			DataAccess.Interfaces.IOpinionRepository opinionRepository,
 			IHttpContextAccessor httpContextAccessor
 		)
 		{
@@ -31,6 +34,7 @@ namespace bluedit.Pages
 			_answerRepository = answerRepository;
 			_userRepository = userRepository;
 			_categoryRepository = categoryRepository;
+			_opinionRepository = opinionRepository;
 			_httpContextAccessor = httpContextAccessor;
 		}
 
@@ -39,6 +43,8 @@ namespace bluedit.Pages
 
 		public async Task<IActionResult> OnGetAsync()
         {
+			isLoggedIn = IsLoggedIn();	// so i can get this value in the html
+
 			if (!ThreadIsCorrect())
 			{
 				return NotFound();
@@ -64,6 +70,7 @@ namespace bluedit.Pages
 			foreach (var answer in Answers)
 			{
 				answer.User = _userRepository.GetById(answer.UserId)!;
+				answer.Likes = _opinionRepository.GetLikesCountForAnswer(answer.Id);
 			}
 
 			return Page();

@@ -23,10 +23,9 @@
 <h1>Inscrivez-vous !</h1>
 
 <form method="post">
-
-	<input class="text-input" type="text" name="Pseudo" placeholder="Nom d'utilisateur" />
-	<input class="text-input" type="text" name="Password" placeholder="Mot de passe" />
-	<input class="text-input" type="text" name="Mail" placeholder="Mail" />
+	<input class="text-input" type="text" name="Pseudo" placeholder="Nom d'utilisateur" maxlength="32" />
+	<input class="text-input" type="password" name="Password" placeholder="Mot de passe" maxlength="128" />
+	<input class="text-input" type="text" name="Mail" placeholder="Mail" maxlength="128" />
 	<input type="submit" class="submit-button" value="S'inscrire" />
 	<div>Déjà inscris ? <a href="/login">Connectez-vous !</a></div>
 </form>
