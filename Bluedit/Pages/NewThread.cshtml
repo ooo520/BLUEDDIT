@@ -1,6 +1,7 @@
 ﻿@page "/b/{CategoryName}/new"
 @model bluedit.Pages.NewThreadModel
 @{
+	ViewData["Title"] = $"Nouveau fil - {Model.CategoryName}";
 }
 
 <style>
