@@ -128,6 +128,8 @@ INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES
 (N'Je ne suis pas d''accord.', 1, 1, N'2024-05-24 13:10:29.893'),
 (N'First', 4, 1, N'2024-05-24 13:13:35.780'),
 (N'c faut tu est deuxieme', 2, 1, N'2024-05-24 13:15:53.060'),
+(N'THIS IS A ROOT ANSWER', 3, 2, N'2024-05-24 13:05:47.667'),
+(N'THIS IS A ROOT ANSWER', 3, 3, N'2024-05-24 13:05:47.667'),
 (N'J''adore le tatou !', 1, 13,	N'2024-05-24 13:44:41.623'),
 (N'Vous préférez quoi entre mini-jeux, faction et SkyBlock ?', 2, 14, N'2024-05-24 13:45:54.640'),
 (N'Je vous le dis tout de suite: vous n''avez aucune chance...', 3,	15,	N'2024-05-24 13:15:53.060');

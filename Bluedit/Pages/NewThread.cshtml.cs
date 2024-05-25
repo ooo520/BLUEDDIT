@@ -41,12 +41,6 @@ namespace bluedit.Pages
 
         public async Task<IActionResult> OnPostAsync()
 		{
-			Category = _categoryRepository.GetByName(CategoryName);
-			if (Category == null)
-			{
-				return NotFound();
-			}
-
 			var title = Request.Form["Title"];
 			var content = Request.Form["Content"];
 
