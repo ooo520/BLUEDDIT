@@ -21,10 +21,23 @@
 	</div>
 </div>
 
-<form method="post">
-	<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
-	<input type="submit" value="Commenter" />
-</form>
+@if (Model.isLoggedIn)
+{
+	<form method="post">
+		<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+		<input type="submit" value="Commenter" />
+	</form>
+}
+else
+{
+	<a href="/signup">
+		S'inscrire
+	</a>
+	<p>Déjà Blueditor ?</p>
+	<a href="/login" >
+		Se connecter
+	</a>
+}
 
 <div class="answers">
 	@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1)) {

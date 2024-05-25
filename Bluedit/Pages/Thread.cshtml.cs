@@ -19,6 +19,7 @@ namespace bluedit.Pages
 		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
 		private readonly DataAccess.Interfaces.IOpinionRepository _opinionRepository;
 		private readonly IHttpContextAccessor _httpContextAccessor;
+		public bool isLoggedIn = false;
 
 		public ThreadModel(
 			DataAccess.Interfaces.IThreadRepository threadRepository,
@@ -42,6 +43,8 @@ namespace bluedit.Pages
 
 		public async Task<IActionResult> OnGetAsync()
         {
+			isLoggedIn = IsLoggedIn();	// so i can get this value in the html
+
 			if (!ThreadIsCorrect())
 			{
 				return NotFound();
