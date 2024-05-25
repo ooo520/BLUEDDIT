@@ -68,11 +68,11 @@ public partial class BlueditContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Name)
-                .HasMaxLength(32)
+                .HasMaxLength(64)
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.Title)
-                .HasMaxLength(32)
+                .HasMaxLength(64)
                 .IsUnicode(false)
                 .HasColumnName("title");
         });
@@ -104,7 +104,7 @@ public partial class BlueditContext : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CategoryId).HasColumnName("categoryId");
             entity.Property(e => e.Title)
-                .HasMaxLength(32)
+                .HasMaxLength(128)
                 .IsUnicode(false)
                 .HasColumnName("title");
 
@@ -128,7 +128,7 @@ public partial class BlueditContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("description");
             entity.Property(e => e.Mail)
-                .HasMaxLength(64)
+                .HasMaxLength(128)
                 .IsUnicode(false)
                 .HasColumnName("mail");
             entity.Property(e => e.Name)
@@ -136,7 +136,7 @@ public partial class BlueditContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.Password)
-                .HasMaxLength(32)
+                .HasMaxLength(128)
                 .IsUnicode(false)
                 .HasColumnName("password");
         });
