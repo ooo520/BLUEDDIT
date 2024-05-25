@@ -35,26 +35,30 @@ namespace TestBlueddit
             _repository = new CategoryRepository(_context, logger, _mapper);
         }
 
-        [Fact]
-        public void GetByNameTest()
+        [Theory]
+        [InlineData("epita", "Epita")]
+        [InlineData("france", "France")]
+        [InlineData("tetris", "Tetris")]
+        [InlineData("animanga", "Anime/Manga")]
+        [InlineData("minecraft", "Minecraft")]
+        public void GetByNameTests(string name, string expected)
         {
-            var name = "minecraft";
-            var Title = "Minecraft";
-
             var result = _repository.GetByName(name).Title;
 
-            Assert.Equal(Title, result);
+            Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void GetByIdTest()
+        [Theory]
+        [InlineData(6, ".NET")]
+        [InlineData(7, "bluedit")]
+        [InlineData(8, "Démineur")]
+        [InlineData(9, "Nourriture")]
+        [InlineData(10, "Pokémon")]
+        public void GetByIdTests(long Id, string expected)
         {
-            var name = "minecraft";
-            var Title = "Minecraft";
+            var result = _repository.GetById(Id).Title; ;
 
-            var result = _repository.GetByName(name).Title;
-
-            Assert.Equal(Title, result);
+            Assert.Equal(expected, result);
         }
     }
 }

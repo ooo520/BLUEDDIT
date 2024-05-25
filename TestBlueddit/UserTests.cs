@@ -84,8 +84,8 @@ namespace TestBlueddit
         [Fact]
         public void SignInTest()
         {
-            string pseudo = "mot";
-            string password = "mot";
+            string pseudo = "Dylan";
+            string password = "password";
 
             var result = _repository.SignIn(pseudo, password);
             

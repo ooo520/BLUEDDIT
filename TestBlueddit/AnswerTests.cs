@@ -34,14 +34,18 @@ namespace TestBlueddit
             _repository = new AnswerRepository(_context, logger, _mapper);
         }
 
-        [Fact]
-        public void GetByThreadTest()
+        [Theory]
+        [InlineData(1, 4)]
+        [InlineData(2, 1)]
+        [InlineData(3, 1)]
+        [InlineData(4, 0)]
+        [InlineData(13, 1)]
+        [InlineData(15, 1)]
+        public void GetByThreadTests(long threadId, long expected)
         {
-            long threadId = 1;
-
             var result = _repository.GetByThread(threadId);
 
-            Assert.Equal(4, result.Count());
+            Assert.Equal(expected, result.Count());
         }
 
         [Fact]

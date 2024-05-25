@@ -7,6 +7,8 @@ using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 using bluedit.DataAccess.EfModels;
 using bluedit.DataAccess;
 using bluedit.DataAccess.Interfaces;
+using Microsoft.Identity.Client.Extensions.Msal;
+using System.Reflection;
 
 namespace TestBlueddit
 {
@@ -35,17 +37,15 @@ namespace TestBlueddit
             _repository = new OpinionRepository(_context, logger, _mapper);
         }
 
-        /*
-        [Fact]
-        public void GetByNameTest()
+        [Theory]
+        [InlineData(1, 2)]
+        [InlineData(3, -1)]
+        [InlineData(4, 1)]
+        public void GetLikesCountForAnswerTests(long id, long expected)
         {
-            var name = "minecraft";
-            var Title = "Minecraft";
+            var result = _repository.GetLikesCountForAnswer(id);
 
-            var result = _repository.GetByName(name).Title;
-
-            Assert.Equal(Title, result);
+            Assert.Equal(expected, result);
         }
-        */
     }
 }
