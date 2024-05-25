@@ -97,7 +97,7 @@ INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES
  (N'JO 2024', 2),
  (N'Paris', 2),
  (N'A mon signal', 2),
- (N'Je n''arrive pas à m''améliorer sur le jeu', 3),
+ (N'Comment s''améliorer sur le jeu', 3),
  (N'WR', 3),
  (N'Modes de jeux', 3),
  (N'One piece', 4),
