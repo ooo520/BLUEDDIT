@@ -25,3 +25,16 @@ header {
     position: sticky;
     top: 0;
 }
+
+.header-right-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2.5rem;
+    background-color: blue;
+    border-radius: 3rem;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+}

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor;
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,6 +30,24 @@
                         </li>
                     </ul>
                 </div>
+                @{
+                    var usernameCookie = HttpContextAccessor?.HttpContext?.Request.Cookies.FirstOrDefault(x => x.Key == "username");
+                    @if (usernameCookie == null)
+                    {
+                        <a href="/login">
+                            <button class="header-right-button">
+                                Se connecter
+                            </button>
+                        </a>
+                    } else
+                    {
+                        <a href="/u/@usernameCookie.Value.Value">
+                            <button class="header-right-button">
+                                Profil
+                            </button>
+                        </a>
+                    }
+                }
             </div>
         </nav>
     </header>
