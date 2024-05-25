@@ -7,11 +7,17 @@
 <h1>@Model.UserName</h1>
 <p>@Model.Blueditor.CreationDate.ToLongDateString()</p>
 
-<form method="post">
-	<textarea name="description" placeholder="Modifiez votre description..." maxlength="256">@Model.Blueditor.Description</textarea>
-	<button type="submit" class="submit-button" asp-page-handler="Save">Sauvegarder</button>
-</form>
+@if (!Model.isCurrentUser) {
+	<p>@Model.Blueditor.Description</p>
+}
+else
+{
+	<form method="post">
+		<textarea name="description" placeholder="Modifiez votre description..." maxlength="256">@Model.Blueditor.Description</textarea>
+		<button type="submit" class="submit-button" asp-page-handler="Save">Sauvegarder</button>
+	</form>
 
-<form method="post">
-    <button type="submit" class="submit-button" asp-page-handler="Disconnect">Déconnexion</button>
-</form>
+	<form method="post">
+		<button type="submit" class="submit-button" asp-page-handler="Disconnect">Déconnexion</button>
+	</form>
+}

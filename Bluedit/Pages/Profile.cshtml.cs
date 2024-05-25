@@ -13,6 +13,7 @@ namespace bluedit.Pages
 		[BindProperty(SupportsGet = true)]
         public string? UserName { get; set; }
         public Dbo.User Blueditor {  get; set; }
+        public bool isCurrentUser = false;
 
         public ProfileModel(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
         {
@@ -34,10 +35,10 @@ namespace bluedit.Pages
                 return NotFound();
             }
 
-			if (user.Name != _httpContextAccessor.HttpContext.Request.Cookies["username"]
-                || user.Password != _httpContextAccessor.HttpContext.Request.Cookies["userpass"])
+			if (user.Name == _httpContextAccessor.HttpContext.Request.Cookies["username"]
+                && user.Password == _httpContextAccessor.HttpContext.Request.Cookies["userpass"])
             {
-                return Unauthorized();  // using unauthorized instead of Forbid() because it would show unhandled exception otherwise
+                isCurrentUser = true;
             }
 
 			Blueditor = user;
