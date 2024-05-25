@@ -35,26 +35,30 @@ namespace TestBlueddit
             _repository = new ThreadRepository(_context, logger, _mapper);
         }
 
-        [Fact]
-        public void GetByCategory()
+        [Theory]
+        [InlineData(1, 3)]
+        [InlineData(2, 3)]
+        [InlineData(3, 3)]
+        [InlineData(4, 3)]
+        [InlineData(5, 3)]
+        public void GetByCategoryTests(long id, long expected)
         {
-            long id = 1;
-            long espected = 3;
-
             var result = _repository.GetByCategory(id);
 
-            Assert.Equal(espected, result.Count());
+            Assert.Equal(expected, result.Count());
         }
 
-        [Fact]
-        public void GetByIdTest()
+        [Theory]
+        [InlineData(1, "MTI")]
+        [InlineData(5, "Paris")]
+        [InlineData(8, "WR")]
+        [InlineData(12, "UwU")]
+        [InlineData(27, "Vegan")]
+        public void GetByIdTests(long id, string expected)
         {
-            long id = 1;
-            string espected = "MTI";
-
             var result = _repository.GetById(id).Title;
 
-            Assert.Equal(espected, result);
+            Assert.Equal(expected, result);
         }
 
         [Fact]
