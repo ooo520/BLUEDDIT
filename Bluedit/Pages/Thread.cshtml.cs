@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Web;
 
 namespace bluedit.Pages
 {
@@ -80,7 +82,7 @@ namespace bluedit.Pages
         {
 			if (!IsLoggedIn())
 			{
-				return RedirectToPage("/login");
+				return Redirect("/login/" + HttpUtility.UrlEncode(_httpContextAccessor.HttpContext.Request.GetEncodedPathAndQuery()));
 			}
 
 			var comment = Request.Form["Comment"];

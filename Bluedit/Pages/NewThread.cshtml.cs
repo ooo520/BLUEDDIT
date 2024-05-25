@@ -1,7 +1,9 @@
 using bluedit.Dbo;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
+using System.Web;
 
 namespace bluedit.Pages
 {
@@ -40,7 +42,7 @@ namespace bluedit.Pages
 		{
 			if (!IsLoggedIn())
 			{
-				return RedirectToPage("/login");
+				return Redirect("/login/" + HttpUtility.UrlEncode(_httpContextAccessor.HttpContext.Request.GetEncodedPathAndQuery()));
 			}
 
 			Category = _categoryRepository.GetByName(CategoryName);
@@ -56,7 +58,7 @@ namespace bluedit.Pages
 		{
 			if (!IsLoggedIn())
 			{
-				return RedirectToPage("/login");
+				return Redirect("/login/" + HttpUtility.UrlEncode(_httpContextAccessor.HttpContext.Request.GetEncodedPathAndQuery()));
 			}
 
 			var title = Request.Form["Title"];
