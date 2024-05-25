@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace bluedit.Pages
 {
     public class ThreadModel : PageModel
-    {
-        public ICollection<Dbo.Answer> Answers { get; set; }
+	{
+		public ICollection<Dbo.Answer> Answers { get; set; }
 
 		[BindProperty(SupportsGet = true)]
 		public string? CategoryName { get; set; }
 		[BindProperty(SupportsGet = true)]
 		public long ThreadId { get; set; }
-		public Dbo.Thread? Thread { get; set; }
+		public Dbo.Thread Thread { get; set; }
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
@@ -37,11 +37,14 @@ namespace bluedit.Pages
 			{
 				return NotFound();
 			}
+			Console.WriteLine(CategoryName);
+			Console.WriteLine(ThreadId);
 			Thread = _threadRepository.GetById(ThreadId);
 			if (Thread == null)
 			{
 				return NotFound();
 			}
+
 			var category = _categoryRepository.GetById(Thread.CategoryId);
 			if (category == null)
 			{
@@ -54,8 +57,9 @@ namespace bluedit.Pages
 			Answers = _answerRepository.GetByThread(ThreadId).OrderBy(a => a.CreationDate).ToList();
 			foreach (var answer in Answers)
 			{
-				answer.User = _userRepository.GetById(answer.UserId);
+				answer.User = _userRepository.GetById(answer.UserId)!;
 			}
+
 			return Page();
         }
     }
