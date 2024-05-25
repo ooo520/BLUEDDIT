@@ -8,16 +8,17 @@ namespace bluedit.Pages
     {
 
 		private readonly DataAccess.Interfaces.IUserRepository _userRepository;
-		public LoginModel(
-			DataAccess.Interfaces.IUserRepository userRepository
-		)
+		public LoginModel(DataAccess.Interfaces.IUserRepository userRepository)
 		{
 			_userRepository = userRepository;
+			Password = "";
+			Pseudo = "";
+
 		}
 
 		public void OnGet()
-        {
-        }
+        {}
+
 		[BindProperty]
 		[Required]
 		public string Pseudo { get; set; }
@@ -28,9 +29,9 @@ namespace bluedit.Pages
 
 		public ActionResult OnPost()
 		{
-			if (ModelState.IsValid)
+			if (ModelState.IsValid && !string.IsNullOrWhiteSpace(Pseudo) && !string.IsNullOrWhiteSpace(Password))
 			{
-				Console.WriteLine(_userRepository.SignIn(Pseudo, Password).Id);
+				Console.WriteLine(_userRepository.SignIn(Pseudo, Password)?.Id);
 			}
 			return RedirectToPage("/login");
 		}

@@ -7,7 +7,7 @@ namespace bluedit.DataAccess
 {
     public class UserRepository : Repository<EfModels.User, Dbo.User>, Interfaces.IUserRepository
     {
-        static HashAlgorithm sha = SHA256.Create();
+        static readonly HashAlgorithm sha = SHA256.Create();
         public UserRepository(EfModels.BlueditContext context, ILogger<UserRepository> logger, IMapper mapper) : base(context, logger, mapper)
         {
 		}
@@ -81,11 +81,12 @@ namespace bluedit.DataAccess
             }
             catch (Exception ex)
             {
+                Console.WriteLine("SignUp fail à cause de :"+ex.ToString());
                 return null;
             }
         }
 
-        public Dbo.User SignIn(string pseudo, string password)
+        public Dbo.User? SignIn(string pseudo, string password)
         {
             var user = GetByName(pseudo);
             if (user == null || user.Password != Hash(password))
