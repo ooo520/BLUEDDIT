@@ -120,11 +120,24 @@
 	<div class="options">
 		<!-- Trié par -->
 		<form id="sortingForm" method="post">
-			<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+			<div>
+				<label for="search">Search:</label>
+				<input type="text" name="SearchQuery" asp-for="SearchQuery" />
+				<input type="submit"></input>
+			</div>
+			<div>
+				<label for="sortingSelect">Sort by:</label>
+				<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+			</div>
 		</form>
+
 	</div>
 	<div class="threads-container" grid-area="threads">
 		<div class="threads-list">
+			@if (Model.Threads != null && Model.Threads.Any())
+			{
+				<p>There is no threads</p>
+			}
 			@foreach (var Thread in Model.Threads)
 			{
 				// TODO: a view might be more appropriate
@@ -181,10 +194,10 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const sortingSelect = document.getElementById('sortingSelect');
-			const sortingForm = document.getElementById('sortingForm');
+			const filterForm = document.getElementById('filterForm');
 
 			sortingSelect.addEventListener('change', function () {
-				sortingForm.submit(); // Submit the form when selection changes
+				filterForm.submit(); // Submit the form when sorting option changes
 			});
 		});
 	</script>

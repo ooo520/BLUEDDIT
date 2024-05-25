@@ -32,9 +32,8 @@ namespace bluedit.Pages
 		{
 			_answerRepository = answerRepository;
 			_categoryRepository = categoryRepository;
-			_threadRepository = threadRepository
+			_threadRepository = threadRepository;
 			_opinionRepository = opinionRepository;
-
 			_userRepository = userRepository;
 		}
 		void initPage()
@@ -75,13 +74,23 @@ namespace bluedit.Pages
 			new SelectListItem { Value = "A-Z", Text = "A à Z" },
 			new SelectListItem { Value = "Z-A", Text = "Z à A" },
 		};
-		[BindProperty(SupportsGet = false)]
+		[BindProperty]
 		public string Sorting { get; set; }
+
+		[BindProperty]
+		public string SearchQuery { get; set; }
 		public IActionResult OnPost()
 		{
 			initPage();
+
+			Console.WriteLine(Threads);
+			Console.WriteLine(Sorting);
+			Console.WriteLine(SearchQuery);
 			if (Threads != null)
 			{
+				
+				if (!string.IsNullOrEmpty(SearchQuery))
+					Threads = Threads.Where((t) => t.Title.Contains(SearchQuery)).ToList();
 				switch (Sorting)
 				{
 					case "ASC":
