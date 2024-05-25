@@ -11,6 +11,21 @@
 		font-size: 18px;
 		font-weight: bold;
 	}
+	.comment-input {
+		border-radius: var(--rounded-corner);
+		padding-inline: 10px;
+		resize: none;
+	}
+
+	.comment-form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.comment-button {
+		background-color: blue;
+		align-self: flex-end;
+	}
 </style>
 
 <div class="answer">
@@ -32,9 +47,9 @@
 
 @if (Model.isLoggedIn)
 {
-	<form method="post">
-		<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
-		<input type="submit" value="Commenter" />
+	<form class="comment-form" method="post">
+		<textarea class="comment-input" name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+		<button class="bluedit-button comment-button" type="submit">Commenter</button>
 	</form>
 }
 else
@@ -45,10 +60,7 @@ else
 <div class="options">
 	<!-- Trié par -->
 	<form id="sortingForm" method="get">
-		<div>
-			<label for="sortingSelect">Sort by:</label>
-			<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
-		</div>
+		<select class="bluedit-button" name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
 	</form>
 </div>
 <div class="answers">

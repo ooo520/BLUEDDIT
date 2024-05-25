@@ -7,8 +7,10 @@
 }
 
 <style>
-	main {
-		display: grid;
+	.category {
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
 	}
 
 	time {
@@ -43,38 +45,52 @@
 		padding-inline: 0.75rem;
 	}
 
-	.thread-answer-count:hover {
-		background-color: rgb(180, 219, 224);
+		.thread-answer-count:hover {
+			background-color: rgb(180, 219, 224);
+		}
+
+	.new-thread-button {
+		color: black;
+	}
+
+	.sort-and-filter {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		column-gap: 10px;
+	}
+
+	.filter-input {
+		background-color: #DBE4E9;
+		border-radius: var(--rounded-corner);
+		padding-inline: 10px;
+		border: none;
+	}
+
+	#search-button {
+		background-color: blue;
 	}
 </style>
 
-<main>
+<div class="category">
 	<div class="category-header" grid-area="header">
-		<h1>@Model.Category.Title</h1>
-		<a href="/b/@Model.CategoryName/new">
-			<button class="bluedit-button">Créer un fil de discussion</button>
-		</a>
+		<h1>r/@Model.Category.Title</h1>
+		<button onclick="document.location.href='/b/@Html.Raw(Model.CategoryName)/new'" class="bluedit-button new-thread-button">
+			Créer un fil de discussion
+		</button>
 	</div>
 
-	<div class="options">
-		<!-- Trié par -->
-		<form id="sortingForm" method="get">
-			<div>
-				<label for="search">Search:</label>
-				<input type="text" name="SearchQuery" asp-for="SearchQuery" />
-				<input type="submit"></input>
-			</div>
-			<div>
-				<label for="sortingSelect">Sort by:</label>
-				<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
-			</div>
-		</form>
-	</div>
+	<!-- Trié par -->
+	<form class="sort-and-filter" method="get">
+		<select class="bluedit-button" name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+		<input class="filter-input" type="text" name="SearchQuery" asp-for="SearchQuery" placeholder="Cherchez par titre..." />
+		<button id="search-button" class="bluedit-button" type="submit">Chercher</button>
+	</form>
+
 	<div class="threads-container" grid-area="threads">
 		<div class="threads-list">
 			@if (Model.Threads == null || !Model.Threads.Any())
 			{
-				<p>There is no threads</p>
+				<p>Aucun fil de discussion ne correspond à votre recherche. </p>
 			}
 			else
 			{
@@ -119,7 +135,7 @@
 			}
 		</div>
 	</div>
-</main>
+</div>
 @section Scripts {
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {

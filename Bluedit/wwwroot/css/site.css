@@ -1,6 +1,6 @@
 :root {
     --answer-button-color: rgb(209, 236, 240);
-    --rounder-corner: 3rem;
+    --rounded-corner: 3rem;
 }
 
 
@@ -32,6 +32,10 @@ header {
     top: 0;
 }
 
+.logo {
+    height: 32px;
+}
+
 h1 {
     font-weight: bold;
 }
@@ -56,7 +60,7 @@ hr {
 .answer-chip {
     display: flex;
     flex-direction: row;
-    border-radius: var(--rounder-corner);
+    border-radius: var(--rounded-corner);
     background-color: var(--answer-button-color);
     width: fit-content;
     height: 32px;
@@ -87,7 +91,7 @@ hr {
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: var(--rounder-corner);
+    border-radius: var(--rounded-corner);
     text-decoration: none !important;
 }
 
@@ -110,3 +114,13 @@ hr {
 .thread-bottom-info {
     column-gap: 0.25rem;
 }
+
+#sortingSelect {
+    padding: 9px;
+    color: black;
+}
+
+    #sortingSelect > option {
+        all: initial;
+        font-family: inherit;
+    }

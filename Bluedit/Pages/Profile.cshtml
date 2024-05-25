@@ -4,8 +4,8 @@
 	ViewData["Title"] = $"u/{Model.UserName}";
 }
 
-<h1>@Model.UserName</h1>
-<p>@Model.Blueditor.CreationDate.ToLongDateString()</p>
+<h1>u/@Model.UserName</h1>
+<p>Blueditor depuis le @Model.Blueditor.CreationDate.ToLongDateString()</p>
 
 @if (!Model.isCurrentUser) {
 	<p>@Model.Blueditor.Description</p>
