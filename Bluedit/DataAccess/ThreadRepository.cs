@@ -25,7 +25,7 @@ namespace bluedit.DataAccess
 				if (options.sort == ThreadSort.NEW)
 				{
 					threads = threads
-						.OrderBy(thread => thread.Answers
+						.OrderBy(thread => _context.Answers.Where(a => a.ThreadId == thread.Id) // thread.Answers
 							.OrderBy(b => b.CreationDate)
 							.First().CreationDate
 						);

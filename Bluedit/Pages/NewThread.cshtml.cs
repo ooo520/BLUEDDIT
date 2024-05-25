@@ -4,11 +4,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace bluedit.Pages
 {
-    public class NewThreadRequest
-    {
-        public readonly string? title = null;
-		public readonly string? content = null;
-	}
 
     public class NewThreadModel : PageModel
     {
@@ -18,14 +13,17 @@ namespace bluedit.Pages
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
+		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
 
 		public NewThreadModel(
 			DataAccess.Interfaces.IThreadRepository threadRepository,
-			DataAccess.Interfaces.ICategoryRepository categoryRepository
+			DataAccess.Interfaces.ICategoryRepository categoryRepository,
+			DataAccess.Interfaces.IAnswerRepository answerRepository
 		)
 		{
 			_threadRepository = threadRepository;
 			_categoryRepository = categoryRepository;
+			_answerRepository = answerRepository;
 		}
 
 
@@ -41,9 +39,14 @@ namespace bluedit.Pages
 			return Page();
 		}
 
-        public async Task<IActionResult> OnPostAsync([FromBody] NewThreadRequest request)
+        public async Task<IActionResult> OnPostAsync()
         {
-			if (request.title == null || request.content == null) {
+			var title = Request.Form["Title"];
+			var content = Request.Form["Content"];
+			Console.WriteLine(title);
+			Console.WriteLine(content);
+			if (title == "" || content == "") {
+				Console.WriteLine("TITLE OR CONTENT IS EMPTY AAAAAAAAAAAAAAAA");
 				return BadRequest();
 			}
 
@@ -60,18 +63,20 @@ namespace bluedit.Pages
 
 			Dbo.Thread newThread = new() { 
 				CategoryId = Category.Id,
-				Title = request.title,
+				Title = title,
 			};
+            Dbo.Thread createdThread = await _threadRepository.Create(newThread);
+
 			Dbo.Answer rootAnswer = new()
 			{
-				Content = request.content,
+				Content = content,
 				CreationDate = DateTime.Now,
-				Thread = newThread
+				ThreadId = createdThread.Id,
+				UserId = 1 // TODO: get user id
 			};
-			//newThread.RootAnswer = rootAnswer;
+			await _answerRepository.Create(rootAnswer);
 
-			Dbo.Thread createdThread = await _threadRepository.Create(newThread);
-			return RedirectToPage($"/b/{CategoryName}/t/{createdThread.Id}");
+			return Redirect($"/b/{CategoryName}/t/{createdThread.Id}");
 		}
     }
 }

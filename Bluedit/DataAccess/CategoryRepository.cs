@@ -20,6 +20,17 @@ namespace bluedit.DataAccess
             return _mapper.Map<Category>(c);
 		}
 
+        public Category? GetById(long id)
+        {
+            var c = _context.Categories.FirstOrDefault(x => x.Id == id);
+            if (c == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<Category>(c);
+        }
+
         public List<Category> GetCategories(string title)
         {
             return _mapper.Map<List<Category>>(_context.Categories.Where(x=> x.Title == title).ToList());
