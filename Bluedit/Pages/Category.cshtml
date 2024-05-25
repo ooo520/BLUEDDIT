@@ -98,10 +98,10 @@
 	<div class="options">
 		<!-- Trié par -->
 		<!-- <span class="sorted-by">Nouveautés</span>-->
-		<select>
-			<option>Nouveautés</option>
-			<option>Top</option>
-		</select>
+
+		<form id="sortingForm" method="post">
+			<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+		</form>
 	</div>
 	<div class="threads-container" grid-area="threads">
 		<div class="threads-list">
@@ -153,3 +153,15 @@
 		</div>
 	</div>
 </main>
+@section Scripts {
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const sortingSelect = document.getElementById('sortingSelect');
+			const sortingForm = document.getElementById('sortingForm');
+
+			sortingSelect.addEventListener('change', function () {
+				sortingForm.submit(); // Submit the form when selection changes
+			});
+		});
+	</script>
+}

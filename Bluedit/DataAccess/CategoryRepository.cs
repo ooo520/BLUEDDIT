@@ -31,9 +31,9 @@ namespace bluedit.DataAccess
             return _mapper.Map<Category>(c);
         }
 
-        public List<Category> GetCategories(string title)
+        public List<Category> GetCategories(string search)
         {
-            return _mapper.Map<List<Category>>(_context.Categories.Where(x=> x.Title == title).ToList());
+            return _mapper.Map<List<Category>>(_context.Categories.Where(x=> x.Title.Contains(search)).ToList());
         }
     }
 }
