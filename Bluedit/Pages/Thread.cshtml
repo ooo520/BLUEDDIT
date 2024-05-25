@@ -1,20 +1,28 @@
 ﻿@page "/b/{CategoryName}/t/{ThreadId:long}"
+@using bluedit.Pages.Shared.Components
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model bluedit.Pages.ThreadModel
 @{
 	ViewData["Title"] = $"{Model.Thread.Title} - b/{Model.CategoryName}";
 }
 
+<style>
+	h1 {
+		font-size: 1.125rem;
+		font-weight: bold;
+	}
+</style>
+
 <div class="root-answer">
 	<h1>@Model.Thread.Title</h1>
 	<div>@Model.Answers.First().User.Name</div>
 	<div>@Model.Answers.First().Content</div>
 	<div class="thread-bottom-info">
-		<div class="opinions">
-			<div>U</div>
-			<div>@Model.Answers.First().Likes</div>
-			<div>D</div>
-		</div>
+		@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new {
+			isConnected = Model.isLoggedIn,
+			answerId = Model.Answers.First().Id,
+			answerLikes = Model.Answers.First().Likes
+		}))
 		<div class="thread-answer-count">
 			@(Model.Answers.Count - 1)
 		</div>
@@ -45,11 +53,7 @@ else
 			<div>@Answer.User.Name</div>
 			<div>@Answer.Content</div>
 			<div class="thread-bottom-info">
-				<div class="opinions">
-					<div>U</div>
-					<div>@Answer.Likes</div>
-					<div>D</div>
-				</div>
+				@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new { isConnected = Model.isLoggedIn, answerId = Answer.Id, answerLikes = Answer.Likes }))
 			</div>
 			<hr />
 		</div>

@@ -1,3 +1,8 @@
+:root {
+    --answer-button-color: rgb(209, 236, 240);
+}
+
+
 html {
   font-size: 14px;
 }
@@ -38,3 +43,28 @@ header {
     font-weight: bold;
     border: none;
 }
+
+.answer-chip {
+    display: flex;
+    flex-direction: row;
+    border-radius: 3rem;
+    background-color: var(--answer-button-color);
+    width: fit-content;
+    height: 32px;
+    align-items: center;
+}
+
+.vote-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: none;
+    background-color: var(--answer-button-color);
+}
+
+    .vote-button:hover {
+        background-color: rgb(180, 219, 224);
+    }
