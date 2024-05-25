@@ -1,0 +1,12 @@
+﻿<div>
+	@ChildContent
+</div>
+<div>•</div>
+<div><time>@Date.ToLongDateString()</time></div>
+
+@code {
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+	[Parameter]
+	public DateTime Date { get; set; }
+}

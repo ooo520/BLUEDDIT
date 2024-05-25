@@ -1,5 +1,6 @@
 :root {
     --answer-button-color: rgb(209, 236, 240);
+    --rounder-corner: 3rem;
 }
 
 
@@ -31,23 +32,31 @@ header {
     top: 0;
 }
 
-.header-right-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 2.5rem;
-    background-color: blue;
-    border-radius: 3rem;
-    padding: 10px;
-    color: white;
+h1 {
     font-weight: bold;
-    border: none;
+}
+
+hr {
+    margin: 0.1rem 0;
+}
+
+.header-right-button {
+    background-color: blue;
+}
+
+.answer {
+    display: flex;
+    border-radius: 5px;
+    padding-block: 5px;
+    padding-inline: 10px;
+    flex-direction: column;
+    row-gap: 5px;
 }
 
 .answer-chip {
     display: flex;
     flex-direction: row;
-    border-radius: 3rem;
+    border-radius: var(--rounder-corner);
     background-color: var(--answer-button-color);
     width: fit-content;
     height: 32px;
@@ -68,3 +77,36 @@ header {
     .vote-button:hover {
         background-color: rgb(180, 219, 224);
     }
+
+.bluedit-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--rounder-corner);
+    text-decoration: none !important;
+}
+
+.user-or-category-link {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.answer-top-info {
+    font-size: 0.875rem;
+    column-gap: 0.25rem;
+}
+
+.answer-top-info,
+.thread-bottom-info {
+    display: flex;
+}
+
+.thread-bottom-info {
+    column-gap: 0.25rem;
+}

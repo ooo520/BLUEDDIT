@@ -35,7 +35,7 @@
 					{
 						var username = HttpContextAccessor?.HttpContext?.Request.Cookies.First(x => x.Key == "username").Value;
 						<a href="/u/@username">
-							<button class="header-right-button">
+							<button class="bluedit-button header-right-button">
 								Profil
 							</button>
 						</a>
@@ -43,7 +43,7 @@
 					catch
 					{
 						<a href="/login">
-							<button class="header-right-button">
+							<button class="bluedit-button header-right-button">
 								Se connecter
 							</button>
 						</a>

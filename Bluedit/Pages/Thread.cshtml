@@ -8,14 +8,18 @@
 
 <style>
 	h1 {
-		font-size: 1.125rem;
+		font-size: 18px;
 		font-weight: bold;
 	}
 </style>
 
-<div class="root-answer">
+<div class="answer">
 	<h1>@Model.Thread.Title</h1>
-	<div>@Model.Answers.First().User.Name</div>
+	<div class="answer-top-info">
+	@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
+	<div>•</div>
+	<div><time>@Model.Answers.First().CreationDate.ToLongDateString()</time></div>
+	</div>
 	<div>@Model.Answers.First().Content</div>
 	<div class="thread-bottom-info">
 		@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new {
@@ -23,9 +27,6 @@
 			answerId = Model.Answers.First().Id,
 			answerLikes = Model.Answers.First().Likes
 		}))
-		<div class="thread-answer-count">
-			@(Model.Answers.Count - 1)
-		</div>
 	</div>
 </div>
 
@@ -38,24 +39,25 @@
 }
 else
 {
-	<a href="/signup">
-		S'inscrire
-	</a>
-	<p>Déjà Blueditor ?</p>
-	<a href="/login" >
-		Se connecter
-	</a>
+	<div><a href="/signup">Inscrivez-vous</a> ou <a href="/login">connectez-vous</a> pour participer à la discussion !</div>
 }
 
 <div class="answers">
 	@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1)) {
 		<div class="answer">
-			<div>@Answer.User.Name</div>
+			<div class="answer-top-info">
+				@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Answer.User.Name }))
+				<div>•</div>
+				<div><time>@Answer.CreationDate.ToLongDateString()</time></div>
+			</div>
 			<div>@Answer.Content</div>
 			<div class="thread-bottom-info">
 				@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new { isConnected = Model.isLoggedIn, answerId = Answer.Id, answerLikes = Answer.Likes }))
 			</div>
-			<hr />
+			@if (Answer != Model.Answers.Last())
+			{
+				<hr />
+			}
 		</div>
 	}
 </div>

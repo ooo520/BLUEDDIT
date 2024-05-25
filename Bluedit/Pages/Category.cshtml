@@ -20,28 +20,11 @@
 		justify-content: space-between;
 	}
 
-	h1 {
-		font-weight: bold;
-	}
-
-	hr {
-		margin: 0.1rem 0;
-	}
-
 	p {
 		margin: 0;
 	}
 
-	.thread {
-		display: flex;
-		border-radius: 5px;
-		padding-block: 5px;
-		padding-inline: 10px;
-		flex-direction: column;
-		row-gap: 5px;
-	}
-
-		.thread:hover {
+		.answer:hover {
 			background-color: rgb(237, 248, 250);
 		}
 
@@ -49,26 +32,6 @@
 		display: flex;
 		flex-direction: column;
 		row-gap: 3px;
-	}
-
-	.thread-top-info {
-		font-size: 0.875rem;
-		column-gap: 0.25rem;
-	}
-
-	.thread-top-info,
-	.thread-bottom-info {
-		display: flex;
-	}
-
-	.thread-bottom-info {
-		column-gap: 0.25rem;
-	}
-
-	.thread-link {
-		color: black;
-		font-weight: bold;
-		text-decoration: none;
 	}
 
 	.sorted-by {
@@ -88,7 +51,9 @@
 <main>
 	<div class="category-header" grid-area="header">
 		<h1>@Model.Category.Title</h1>
-		<a href="/b/@Model.CategoryName/new">Créer un fil de discussion</a>
+		<a href="/b/@Model.CategoryName/new">
+			<button class="bluedit-button">Créer un fil de discussion</button>
+		</a>
 	</div>
 
 	<div class="options">
@@ -112,13 +77,9 @@
 				var user = Model._userRepository.GetById(rootAnswer.UserId)!;
 				var isConnected = Model.HttpContext?.Request.Cookies.ContainsKey("username") ?? false;
 
-				<div class="thread">
-					<div class="thread-top-info">
-						<div>
-							<a class="thread-link" href="/u/@user.Name">
-								u/@user.Name
-							</a>
-						</div>
+				<div class="answer">
+					<div class="answer-top-info">
+						@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = user.Name }))
 						<div>•</div>
 						<div><time>@Model.ThreadIdToRootAnswerMap[Thread.Id].CreationDate.ToLongDateString()</time></div>
 					</div>
