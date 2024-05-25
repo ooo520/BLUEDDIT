@@ -25,10 +25,10 @@ namespace bluedit.Pages
 
         public async Task<IActionResult> OnGet()
         {
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(userpass) || (_userRepository.GetByName(username)?.Password != userpass))
-            {
-                return RedirectToPage("/login");
-            }
+            //if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(userpass) || (_userRepository.GetByName(username)?.Password != userpass))
+            //{
+            //    return RedirectToPage("/login");
+            //}
 
             categories = await _categoryRepository.Read();
             return Page();
