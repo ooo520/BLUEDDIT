@@ -58,10 +58,6 @@ namespace bluedit.Controllers
 				AnswerId = answerId,
 				Like = vote
 			};
-			Console.WriteLine("trying to insert new opinion with values:");
-			Console.WriteLine("authorId: " + newOpinion.AuthorId);
-			Console.WriteLine("answerId: " + newOpinion.AnswerId);
-			Console.WriteLine("like: " + newOpinion.Like);
 
 			if (opinion == null)
 			{
