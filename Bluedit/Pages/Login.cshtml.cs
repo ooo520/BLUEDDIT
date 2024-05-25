@@ -15,30 +15,22 @@ namespace bluedit.Pages
         public LoginModel(DataAccess.Interfaces.IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
 		{
 			_userRepository = userRepository;
-			Password = "";
-			Pseudo = "";
             _httpContextAccessor = httpContextAccessor;
         }
 
 		[BindProperty(SupportsGet = true)]
-		public string redirectUrl { get; set; }
+		public string? redirectUrl { get; set; }
 
 		public void OnGet()
         {
-            Console.WriteLine(redirectUrl);
-            Console.WriteLine(HttpUtility.UrlDecode(redirectUrl));
+            // TODO: maybe prevent this if logged in (and redirect to profile page)
         }
 
-		[BindProperty]
-		[Required]
-		public string Pseudo { get; set; }
-
-		[BindProperty]
-		[Required]
-		public string Password { get; set; }
-
-		public async Task<IActionResult> OnPost()
+		public IActionResult OnPost()
 		{
+            string Pseudo = Request.Form["Pseudo"];
+            string Password = Request.Form["Password"];
+
 			if (ModelState.IsValid && !string.IsNullOrWhiteSpace(Pseudo) && !string.IsNullOrWhiteSpace(Password))
 			{
                 try
@@ -46,9 +38,13 @@ namespace bluedit.Pages
                     Dbo.User usr = _userRepository.SignIn(Pseudo, Password);
                     if (usr != null)
                     {
-                        HttpContext.Response.Cookies.Append("username", usr.Name);
-                        HttpContext.Response.Cookies.Append("userpass", usr.Password);
-                        return Redirect(HttpUtility.UrlDecode(redirectUrl));
+                        _httpContextAccessor.HttpContext.Response.Cookies.Append("username", usr.Name);
+                        _httpContextAccessor.HttpContext.Response.Cookies.Append("userpass", usr.Password);
+                        if (redirectUrl != null)
+                        {
+                            return Redirect(HttpUtility.UrlDecode(redirectUrl));
+                        }
+                        return RedirectToPage("/Index");
                     }
                 }
                 catch (Exception ex)
@@ -56,7 +52,7 @@ namespace bluedit.Pages
                     Console.WriteLine("An error occured");  // A remplacer par des logs
                 }
             }
-			return RedirectToPage("/login/" + redirectUrl);
+			return Redirect("/login/" + redirectUrl);
 		}
 	}
 }
