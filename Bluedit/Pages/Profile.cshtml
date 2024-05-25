@@ -8,5 +8,6 @@
 <p>@Model.Blueditor.CreationDate.ToLongDateString()</p>
 <p>@Model.Blueditor.Description</p>
 
-<!-- Only display if current user -->
-<button>Disconnect</button>
+<form method="post">
+    <button type="submit" class="submit-button" asp-page-handler="Disconnect">Déconnexion</button>
+</form>

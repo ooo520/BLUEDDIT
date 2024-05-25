@@ -32,5 +32,11 @@ namespace bluedit.Pages
 
             return Page();
         }
+        public IActionResult OnPostDisconnect()
+        {
+            //Console.WriteLine("aaaaaaaaaaaaaa");
+            HttpContext.Response.Cookies.Delete("username");
+            return RedirectToPage("/");
+        }
     }
 }
