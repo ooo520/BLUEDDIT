@@ -64,13 +64,14 @@ namespace bluedit.DataAccess
         {
 			if (!IsValidBase64String(password))
             {
-				Console.WriteLine("fail 64");
+			// 	Console.WriteLine("fail 64");
 				return null;
             }
-			Console.WriteLine("Password of user from " +password+" to "+Hash(password));
+			// Console.WriteLine("Password of user from " +password+" to "+Hash(password));
+            // Console.WriteLine(Hash("password"));
 			var user = new Dbo.User
             {
-                Name = pseudo,
+                Name = pseudo.Trim(),
                 Password = Hash(password),
                 Mail = mail,
                 Description = ""
@@ -88,8 +89,12 @@ namespace bluedit.DataAccess
 
         public Dbo.User? SignIn(string pseudo, string password)
         {
-            var user = GetByName(pseudo);
-            if (user == null || user.Password != Hash(password))
+			Dbo.User? user = GetByName(pseudo);
+            // Console.WriteLine("input :" + pseudo);
+			// Console.WriteLine("input :" + password);
+			// Console.WriteLine("User est" + user?.Name);
+            // Console.WriteLine(user?.Password + " équivaut? " + Hash(password));
+			if (user == null || user.Password != Hash(password))
             {
                 return null;
             }

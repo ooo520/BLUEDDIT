@@ -20,8 +20,8 @@ create table [user]
         constraint PK_user
             primary key,
     name         varchar(32)
-	constraint UK_user_name UNIQUE			  not null,
-    password     varchar(32)                              not null,
+    constraint UK_user_name UNIQUE                        not null,
+    password     varchar(100)                             not null,
     description  varchar(256)                             not null,
     creationDate datetime
         constraint DF_user_creationDate default getdate() not null,
@@ -86,10 +86,10 @@ INSERT INTO bluedit.dbo.category (name, title) VALUES
 (N'pokemon', N'Pokémon');
 
 INSERT INTO bluedit.dbo.[user] (name, password, description, creationDate, mail) VALUES
-(N'Dylan', N'password', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan.toledano@epita.fr'),
-(N'Leo', N'password', N'Dark Mage', N'2024-05-24 10:09:57.623', N'leo@epitech.fr'),
-(N'Lea', N'password', N'White Mage', N'2024-05-24 10:09:57.630', N'lea@uwu.fr'),
-(N'Quentin', N'password', N'Connoisseur', N'2024-05-24 10:09:57.640', N'quentin@42.fr');
+(N'Dylan', N'﻿XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', N'Plumber Knight', N'2024-05-24 10:09:57.613', N'dylan.toledano@epita.fr'),
+(N'Leo', N'﻿XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', N'Dark Mage', N'2024-05-24 10:09:57.623', N'leo@epitech.fr'),
+(N'Lea', N'XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', N'White Mage', N'2024-05-24 10:09:57.630', N'lea@uwu.fr'),
+(N'Quentin', N'﻿XohImNooBHFR0OVvjcYpJ3NgPQ1qq73WKhHvch0VQtg=', N'Connoisseur', N'2024-05-24 10:09:57.640', N'quentin@42.fr');
 
 INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES
  (N'MTI', 1),
@@ -128,6 +128,8 @@ INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES
 (N'Je ne suis pas d''accord.', 1, 1, N'2024-05-24 13:10:29.893'),
 (N'First', 4, 1, N'2024-05-24 13:13:35.780'),
 (N'c faut tu est deuxieme', 2, 1, N'2024-05-24 13:15:53.060'),
+(N'THIS IS A ROOT ANSWER', 3, 2, N'2024-05-24 13:05:47.667'),
+(N'THIS IS A ROOT ANSWER', 3, 3, N'2024-05-24 13:05:47.667'),
 (N'J''adore le tatou !', 1, 13,	N'2024-05-24 13:44:41.623'),
 (N'Vous préférez quoi entre mini-jeux, faction et SkyBlock ?', 2, 14, N'2024-05-24 13:45:54.640'),
 (N'Je vous le dis tout de suite: vous n''avez aucune chance...', 3,	15,	N'2024-05-24 13:15:53.060');

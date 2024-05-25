@@ -8,13 +8,16 @@ namespace bluedit.Pages
     {
 
 		private readonly DataAccess.Interfaces.IUserRepository _userRepository;
-		public LoginModel(DataAccess.Interfaces.IUserRepository userRepository)
+
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public LoginModel(DataAccess.Interfaces.IUserRepository userRepository, IHttpContextAccessor httpContextAccessor)
 		{
 			_userRepository = userRepository;
 			Password = "";
 			Pseudo = "";
-
-		}
+            _httpContextAccessor = httpContextAccessor;
+        }
 
 		public void OnGet()
         {}
@@ -27,12 +30,25 @@ namespace bluedit.Pages
 		[Required]
 		public string Password { get; set; }
 
-		public ActionResult OnPost()
+		public async Task<IActionResult> OnPost()
 		{
 			if (ModelState.IsValid && !string.IsNullOrWhiteSpace(Pseudo) && !string.IsNullOrWhiteSpace(Password))
 			{
-				Console.WriteLine(_userRepository.SignIn(Pseudo, Password)?.Id);
-			}
+                try
+                {
+                    Dbo.User usr = _userRepository.SignIn(Pseudo, Password);
+                    if (usr != null)
+                    {
+                        HttpContext.Response.Cookies.Append("username", usr.Name);
+                        HttpContext.Response.Cookies.Append("userpass", usr.Password);
+                        return RedirectToPage("/");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("An error occured");  // A remplacer par des logs
+                }
+            }
 			return RedirectToPage("/login");
 		}
 	}
