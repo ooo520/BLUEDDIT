@@ -1,7 +1,7 @@
 ﻿@page "/u/{UserName}"
 @model bluedit.Pages.ProfileModel
 @{
-
+	ViewData["Title"] = $"u/{Model.UserName}";
 }
 
 <h1>@Model.UserName</h1>

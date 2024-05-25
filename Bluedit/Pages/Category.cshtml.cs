@@ -18,17 +18,21 @@ namespace bluedit.Pages
 		public readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
 		public readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
 		public readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
+        public readonly DataAccess.Interfaces.IUserRepository _userRepository;
 
-		public CategoryModel(
+        public CategoryModel(
 			DataAccess.Interfaces.IAnswerRepository answerRepository,
 			DataAccess.Interfaces.ICategoryRepository categoryRepository,
-			DataAccess.Interfaces.IThreadRepository threadRepository
+			DataAccess.Interfaces.IThreadRepository threadRepository,
+			DataAccess.Interfaces.IUserRepository userRepository
 		)
 		{
 			_answerRepository = answerRepository;
 			_categoryRepository = categoryRepository;
 			_threadRepository = threadRepository;
-		}
+			_userRepository = userRepository;
+
+        }
 
 		public async Task<IActionResult> OnGetAsync()
 		{

@@ -1,6 +1,7 @@
 ﻿@page "/b/{CategoryName}/new"
 @model bluedit.Pages.NewThreadModel
 @{
+	ViewData["Title"] = $"Nouveau fil - {Model.CategoryName}";
 }
 
 <style>
@@ -20,7 +21,7 @@
 <h1>Créer un nouveau fil dans b/@Model.CategoryName</h1>
 
 <form method="post">
-	<input class="text-input" name="title" type="text" placeholder="Titre" /> <!-- asp-for="title" -->
+	<input class="text-input" name="title" type="text" placeholder="Titre" maxlength="128" /> <!-- asp-for="title" -->
 	<textarea rows="4" placeholder="Corps" name="content" class="text-input"></textarea> <!-- asp-for="content" -->
 	@* <input class="text-input" name="content" type="text" placeholder="Corps" /> *@
 	<input type="submit" class="submit-button" value="Publier" />

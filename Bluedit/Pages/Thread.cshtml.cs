@@ -17,29 +17,39 @@ namespace bluedit.Pages
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
 		private readonly DataAccess.Interfaces.IUserRepository _userRepository;
 		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
+		private readonly DataAccess.Interfaces.IOpinionRepository _opinionRepository;
+		private readonly IHttpContextAccessor _httpContextAccessor;
+		public bool isLoggedIn = false;
 
 		public ThreadModel(
 			DataAccess.Interfaces.IThreadRepository threadRepository,
 			DataAccess.Interfaces.IAnswerRepository answerRepository,
 			DataAccess.Interfaces.IUserRepository userRepository,
-			DataAccess.Interfaces.ICategoryRepository categoryRepository
+			DataAccess.Interfaces.ICategoryRepository categoryRepository,
+			DataAccess.Interfaces.IOpinionRepository opinionRepository,
+			IHttpContextAccessor httpContextAccessor
 		)
 		{
 			_threadRepository = threadRepository;
 			_answerRepository = answerRepository;
 			_userRepository = userRepository;
 			_categoryRepository = categoryRepository;
+			_opinionRepository = opinionRepository;
+			_httpContextAccessor = httpContextAccessor;
 		}
+
+		public string username => _httpContextAccessor.HttpContext.Request.Cookies["username"];
+		public string userpass => _httpContextAccessor.HttpContext.Request.Cookies["userpass"];
 
 		public async Task<IActionResult> OnGetAsync()
         {
+			isLoggedIn = IsLoggedIn();	// so i can get this value in the html
+
 			if (!ThreadIsCorrect())
 			{
 				return NotFound();
 			}
 
-			Console.WriteLine(CategoryName);
-			Console.WriteLine(ThreadId);
 			Thread = _threadRepository.GetById(ThreadId);
 			if (Thread == null)
 			{
@@ -60,6 +70,7 @@ namespace bluedit.Pages
 			foreach (var answer in Answers)
 			{
 				answer.User = _userRepository.GetById(answer.UserId)!;
+				answer.Likes = _opinionRepository.GetLikesCountForAnswer(answer.Id);
 			}
 
 			return Page();
@@ -67,10 +78,13 @@ namespace bluedit.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var comment = Request.Form["Comment"];
+			if (!IsLoggedIn())
+			{
+				return RedirectToPage("/login");
+			}
 
-            Console.WriteLine("writing comment '" + comment + "'");
-            Console.WriteLine("in thread " + ThreadId );
+			var comment = Request.Form["Comment"];
+
             if (comment == "")
             {
                 return BadRequest();
@@ -81,12 +95,13 @@ namespace bluedit.Pages
                 return NotFound();
             }
 
-            Dbo.Answer newAnswer = new()
+			long userId = _userRepository.GetByName(username).Id; // should not be null
+			Dbo.Answer newAnswer = new()
             {
                 Content = comment,
                 CreationDate = DateTime.Now,
                 ThreadId = ThreadId,
-                UserId = 1 // TODO: get user id
+                UserId = userId
             };
             await _answerRepository.Create(newAnswer);
 
@@ -116,5 +131,10 @@ namespace bluedit.Pages
 
             return true;
         }
-    }
+
+		private bool IsLoggedIn()
+		{
+			return !(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(userpass) || (_userRepository.GetByName(username)?.Password != userpass));
+		}
+	}
 }

@@ -2,5 +2,7 @@
 {
     public interface IOpinionRepository : IRepository<EfModels.Opinion, Dbo.Opinion>
     {
-    }
+		public long GetLikesCountForAnswer(long answerId);
+
+	}
 }
