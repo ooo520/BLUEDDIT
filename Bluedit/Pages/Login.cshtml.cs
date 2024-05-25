@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace bluedit.Pages
 {
@@ -19,8 +20,14 @@ namespace bluedit.Pages
             _httpContextAccessor = httpContextAccessor;
         }
 
+		[BindProperty(SupportsGet = true)]
+		public string redirectUrl { get; set; }
+
 		public void OnGet()
-        {}
+        {
+            Console.WriteLine(redirectUrl);
+            Console.WriteLine(HttpUtility.UrlDecode(redirectUrl));
+        }
 
 		[BindProperty]
 		[Required]
@@ -41,7 +48,7 @@ namespace bluedit.Pages
                     {
                         HttpContext.Response.Cookies.Append("username", usr.Name);
                         HttpContext.Response.Cookies.Append("userpass", usr.Password);
-                        return RedirectToPage("/");
+                        return Redirect(HttpUtility.UrlDecode(redirectUrl));
                     }
                 }
                 catch (Exception ex)
@@ -49,7 +56,7 @@ namespace bluedit.Pages
                     Console.WriteLine("An error occured");  // A remplacer par des logs
                 }
             }
-			return RedirectToPage("/login");
+			return RedirectToPage("/login/" + redirectUrl);
 		}
 	}
 }
