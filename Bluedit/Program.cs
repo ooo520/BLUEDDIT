@@ -23,6 +23,13 @@ namespace bluedit
             {
                 o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
             });
+
+            builder.Services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+            });
+            builder.Services.AddHttpContextAccessor();
+
             builder.Services.AddControllers();
             builder.Services.AddTransient<bluedit.DataAccess.Interfaces.IAnswerRepository, bluedit.DataAccess.AnswerRepository>();
             builder.Services.AddTransient<bluedit.DataAccess.Interfaces.ICategoryRepository, bluedit.DataAccess.CategoryRepository>();
@@ -47,6 +54,8 @@ namespace bluedit
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
