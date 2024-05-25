@@ -1,6 +1,7 @@
 using bluedit.Dbo;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
 
 namespace bluedit.Pages
 {
@@ -8,7 +9,7 @@ namespace bluedit.Pages
     public class NewThreadModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
-        public string? CategoryName { get; set; }
+        public string CategoryName { get; set; }
 		public Category? Category { get; set; }
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
@@ -27,26 +28,23 @@ namespace bluedit.Pages
 		}
 
 
-		public async Task<IActionResult> OnGetAsync()
+		public IActionResult OnGet()
 		{
-			if (CategoryName == null)
+			Category = _categoryRepository.GetByName(CategoryName);
+			if (Category == null)
 			{
 				return NotFound();
 			}
-
-			// Category = _categoryRepository.GetByName(CategoryName);
 
 			return Page();
 		}
 
         public async Task<IActionResult> OnPostAsync()
-        {
+		{
 			var title = Request.Form["Title"];
 			var content = Request.Form["Content"];
-			Console.WriteLine(title);
-			Console.WriteLine(content);
+
 			if (title == "" || content == "") {
-				Console.WriteLine("TITLE OR CONTENT IS EMPTY AAAAAAAAAAAAAAAA");
 				return BadRequest();
 			}
 

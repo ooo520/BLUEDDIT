@@ -21,7 +21,7 @@ create table [user]
             primary key,
     name         varchar(32)
     constraint UK_user_name UNIQUE                        not null,
-    password     varchar(100)                              not null,
+    password     varchar(100)                             not null,
     description  varchar(256)                             not null,
     creationDate datetime
         constraint DF_user_creationDate default getdate() not null,
@@ -98,7 +98,7 @@ INSERT INTO bluedit.dbo.thread (title, categoryId) VALUES
  (N'JO 2024', 2),
  (N'Paris', 2),
  (N'A mon signal', 2),
- (N'Je n''arrive pas à m''améliorer sur le jeu', 3),
+ (N'Comment s''améliorer sur le jeu', 3),
  (N'WR', 3),
  (N'Modes de jeux', 3),
  (N'One piece', 4),
@@ -128,6 +128,8 @@ INSERT INTO bluedit.dbo.answer (content, userId, threadId, creationDate) VALUES
 (N'Je ne suis pas d''accord.', 1, 1, N'2024-05-24 13:10:29.893'),
 (N'First', 4, 1, N'2024-05-24 13:13:35.780'),
 (N'c faut tu est deuxieme', 2, 1, N'2024-05-24 13:15:53.060'),
+(N'THIS IS A ROOT ANSWER', 3, 2, N'2024-05-24 13:05:47.667'),
+(N'THIS IS A ROOT ANSWER', 3, 3, N'2024-05-24 13:05:47.667'),
 (N'J''adore le tatou !', 1, 13,	N'2024-05-24 13:44:41.623'),
 (N'Vous préférez quoi entre mini-jeux, faction et SkyBlock ?', 2, 14, N'2024-05-24 13:45:54.640'),
 (N'Je vous le dis tout de suite: vous n''avez aucune chance...', 3,	15,	N'2024-05-24 13:15:53.060');

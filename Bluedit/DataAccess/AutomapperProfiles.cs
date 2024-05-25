@@ -14,8 +14,7 @@ namespace bluedit.DataAccess
             // nested items...
 			CreateMap<EfModels.Answer, Dbo.Answer>()
 				.ForMember(pts => pts.User, opt => opt.DoNotAllowNull());
-			CreateMap<Dbo.Answer, EfModels.Answer>()  
-				.ForMember(pts => pts.User, opt => opt.DoNotAllowNull());
+            CreateMap<Dbo.Answer, EfModels.Answer>();
 
             CreateMap<EfModels.Category, Dbo.Category>();
             CreateMap<Dbo.Category, EfModels.Category>();

@@ -7,12 +7,13 @@
 <div class="root-answer">
 	<h1>@Model.Thread.Title</h1>
 	<div>@Model.Answers.First().User.Name</div>
-	<div>@Model.Answers.First().Content</div></>
+	<div>@Model.Answers.First().Content</div>
 </div>
 
-@* TODO: Handle comment submit *@
-<textarea placeholder="Ecrivez un commentaire..."></textarea>
-<input type="submit" value="Commenter" />
+<form method="post">
+	<textarea name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+	<input type="submit" value="Commenter" />
+</form>
 
 @* <div>
 	Title: @Model.Thread.Title

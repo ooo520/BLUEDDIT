@@ -4,14 +4,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace bluedit.Pages
 {
     public class ThreadModel : PageModel
-    {
-        public ICollection<Dbo.Answer> Answers { get; set; }
+	{
+		public ICollection<Dbo.Answer> Answers { get; set; }
 
 		[BindProperty(SupportsGet = true)]
 		public string? CategoryName { get; set; }
 		[BindProperty(SupportsGet = true)]
 		public long ThreadId { get; set; }
-		public Dbo.Thread? Thread { get; set; }
+		public Dbo.Thread Thread { get; set; }
 
 		private readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		private readonly DataAccess.Interfaces.IAnswerRepository _answerRepository;
@@ -33,30 +33,88 @@ namespace bluedit.Pages
 
 		public async Task<IActionResult> OnGetAsync()
         {
-			if (ThreadId == null)
+			if (!ThreadIsCorrect())
 			{
 				return NotFound();
 			}
+
+			Console.WriteLine(CategoryName);
+			Console.WriteLine(ThreadId);
 			Thread = _threadRepository.GetById(ThreadId);
 			if (Thread == null)
 			{
 				return NotFound();
 			}
+
 			var category = _categoryRepository.GetById(Thread.CategoryId);
 			if (category == null)
 			{
 				return NotFound();
 			}
-			if (category.Name !=  CategoryName)
+			if (category.Name != CategoryName)
 			{
 				return BadRequest();
 			}
+
 			Answers = _answerRepository.GetByThread(ThreadId).OrderBy(a => a.CreationDate).ToList();
 			foreach (var answer in Answers)
 			{
-				answer.User = _userRepository.GetById(answer.UserId);
+				answer.User = _userRepository.GetById(answer.UserId)!;
 			}
+
 			return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var comment = Request.Form["Comment"];
+
+            Console.WriteLine("writing comment '" + comment + "'");
+            Console.WriteLine("in thread " + ThreadId );
+            if (comment == "")
+            {
+                return BadRequest();
+            }
+
+            if (!ThreadIsCorrect())
+            {
+                return NotFound();
+            }
+
+            Dbo.Answer newAnswer = new()
+            {
+                Content = comment,
+                CreationDate = DateTime.Now,
+                ThreadId = ThreadId,
+                UserId = 1 // TODO: get user id
+            };
+            await _answerRepository.Create(newAnswer);
+
+            return Redirect($"/b/{CategoryName}/t/{ThreadId}");
+        }
+
+        private bool ThreadIsCorrect()
+        {
+            if (ThreadId == 0 || CategoryName == "")
+            {
+                return false;
+            }
+            Thread = _threadRepository.GetById(ThreadId);
+            if (Thread == null)
+            {
+                return false;
+            }
+            var category = _categoryRepository.GetById(Thread.CategoryId);
+            if (category == null)
+            {
+                return false;
+            }
+            if (category.Name != CategoryName)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
