@@ -16,5 +16,6 @@ namespace bluedit.Dbo
         public DateTime CreationDate { get; set; }
 		public Thread Thread { get; set; } = null!;
 		public User User { get; set; } = null!;
+        public long Likes {  get; set; } = 0!;
     }
 }
