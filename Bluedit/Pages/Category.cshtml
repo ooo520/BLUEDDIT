@@ -14,6 +14,10 @@
 		display: grid;
 	}
 
+	time {
+		color: #576F76;
+	}
+
 	.category-header {
 		display: flex;
 		justify-content: space-between;
@@ -27,13 +31,20 @@
 		margin: 0.1rem 0;
 	}
 
+	p {
+		margin: 0;
+	}
+
 	.thread {
+		display: flex;
 		border-radius: 5px;
-		padding: 5px;
+		padding-block: 5px;
+		padding-inline: 10px;
+		flex-direction: column;
+		row-gap: 5px;
 	}
 
 		.thread:hover {
-			cursor: pointer;
 			background-color: rgb(237, 248, 250);
 		}
 
@@ -43,13 +54,24 @@
 		row-gap: 3px;
 	}
 
+	.thread-top-info {
+		font-size: 0.875rem;
+		column-gap: 0.25rem;
+	}
+
 	.thread-top-info,
 	.thread-bottom-info {
 		display: flex;
 	}
 
 	.thread-bottom-info {
-		column-gap: 10px;
+		column-gap: 0.25rem;
+	}
+
+	.thread-link {
+		color: black;
+		font-weight: bold;
+		text-decoration: none;
 	}
 
 	.sorted-by {
@@ -97,8 +119,6 @@
 
 	<div class="options">
 		<!-- Trié par -->
-		<!-- <span class="sorted-by">Nouveautés</span>-->
-
 		<form id="sortingForm" method="post">
 			<select name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
 		</form>
@@ -111,20 +131,24 @@
 				// TODO: this shouldn't be necessary, actually, since thread has an
 				//       answers property with a Count() method.
 				//       However, in the current state, it seems to always return 0.
+				var rootAnswer = Model._answerRepository.GetRootAnswerOfThread(Thread.Id);
 				long answerCount = Model._threadRepository.GetAnswerCountForThread(Thread.Id);
+				var user = Model._userRepository.GetById(rootAnswer.UserId)!;
 
 				<div class="thread">
 					<div class="thread-top-info">
-						<a href="/u/@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name">
-							@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name
+						<div>
+							<a class="thread-link" href="/u/@Model.ThreadIdToRootAnswerMap[Thread.Id].User.Name">
+								u/@user.Name
 						</a>
-						<span>@(" - ")</span>
-						<span>@Model.ThreadIdToRootAnswerMap[Thread.Id].CreationDate.ToLongDateString()</span>
+						</div>
+						<div>•</div>
+						<div><time>@Model.ThreadIdToRootAnswerMap[Thread.Id].CreationDate.ToLongDateString()</time></div>
 					</div>
-					<a href="/b/@Model.CategoryName/t/@Thread.Id">
-						<h2>@Thread.Title</h2>
+					<a class="thread-link" href="/b/@Model.CategoryName/t/@Thread.Id">
+						@Thread.Title
 					</a>
-					<p>
+					<p class="thread-root-answer-content">
 						@Model.ThreadIdToRootAnswerMap[Thread.Id].Content
 					</p>
 					<div class="thread-bottom-info">

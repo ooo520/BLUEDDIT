@@ -38,7 +38,7 @@ namespace bluedit.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.LogError("Fail read DB", ex);
+                _logger.LogError("Fail read DB: " + ex.ToString());
                 return null;
             }
         }
@@ -55,7 +55,7 @@ namespace bluedit.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.LogError("Fail create DB", ex);
+                _logger.LogError("Fail create DB: " + ex.ToString());
                 return null;
             }
         }
@@ -78,7 +78,7 @@ namespace bluedit.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.LogError("Fail update DB", ex);
+                _logger.LogError("Fail update DB: " + ex.ToString());
 
                 return null;
             }
@@ -101,7 +101,7 @@ namespace bluedit.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.LogError("Fail delete DB", ex);
+                _logger.LogError("Fail delete DB: " + ex.ToString());
                 return false;
             }
         }

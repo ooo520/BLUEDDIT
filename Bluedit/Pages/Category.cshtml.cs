@@ -21,22 +21,25 @@ namespace bluedit.Pages
 		public readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
 		public readonly DataAccess.Interfaces.IThreadRepository _threadRepository;
 		public readonly DataAccess.Interfaces.IOpinionRepository _opinionRepository;
-
+		public readonly DataAccess.Interfaces.IUserRepository _userRepository;
 		public CategoryModel(
 			DataAccess.Interfaces.IAnswerRepository answerRepository,
 			DataAccess.Interfaces.ICategoryRepository categoryRepository,
 			DataAccess.Interfaces.IThreadRepository threadRepository,
-			DataAccess.Interfaces.IOpinionRepository opinionRepository
+			DataAccess.Interfaces.IOpinionRepository opinionRepository,
+			DataAccess.Interfaces.IUserRepository userRepository
 		)
 		{
 			_answerRepository = answerRepository;
 			_categoryRepository = categoryRepository;
-			_threadRepository = threadRepository;
+			_threadRepository = threadRepository
 			_opinionRepository = opinionRepository;
+
+			_userRepository = userRepository;
 		}
 		void initPage()
 		{
-			if (CategoryName == null)return;
+			if (CategoryName == null) return;
 			Category = _categoryRepository.GetByName(CategoryName);
 			if (Category == null) return;
 			Threads = _threadRepository.GetByCategory(Category.Id, null);
