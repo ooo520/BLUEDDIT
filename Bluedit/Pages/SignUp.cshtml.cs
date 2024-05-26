@@ -5,21 +5,28 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
+using System.Web;
 
 namespace bluedit.Pages
 {
     public class SignUpModel : PageModel
     {
-        public void OnGet()
+		[BindProperty(SupportsGet = true)]
+		public string? redirectUrl { get; set; }
+
+		public void OnGet()
         {
         }
 
 		private readonly DataAccess.Interfaces.IUserRepository _userRepository;
+		private readonly IHttpContextAccessor _httpContextAccessor;
 		public SignUpModel(
-			DataAccess.Interfaces.IUserRepository userRepository
+			DataAccess.Interfaces.IUserRepository userRepository,
+			IHttpContextAccessor httpContextAccessor
 		)
 		{
 			_userRepository = userRepository;
+			_httpContextAccessor = httpContextAccessor;
 		}
 
 		[BindProperty]
@@ -43,8 +50,14 @@ namespace bluedit.Pages
 					{ 
 						Dbo.User usr = await _userRepository.SignUp(Pseudo, Password, Mail);
 						if (usr != null) 
-						{ 
-							return RedirectToPage("/login");
+						{
+							_httpContextAccessor.HttpContext.Response.Cookies.Append("username", usr.Name);
+							_httpContextAccessor.HttpContext.Response.Cookies.Append("userpass", usr.Password);
+							if (redirectUrl != null)
+							{
+								return Redirect(HttpUtility.UrlDecode(redirectUrl));
+							}
+							return RedirectToPage("/Index");
 						}
 					}
                 }
@@ -53,7 +66,7 @@ namespace bluedit.Pages
                     Console.WriteLine("An error occured");  // A remplacer par des logs
                 }
 			}
-			return RedirectToPage("/signup");
+			return RedirectToPage("/signup/" + redirectUrl);
 		}
     }
 }
