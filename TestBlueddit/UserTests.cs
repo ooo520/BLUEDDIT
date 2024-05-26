@@ -34,24 +34,26 @@ namespace TestBlueddit
             _repository = new UserRepository(_context, logger, _mapper);
         }
 
-        [Fact]
-        public void GetByNameTest()
+        [Theory]
+        [InlineData("Dylan", "dylan.toledano@epita.fr")]
+        [InlineData("Leo", "leo@epitech.fr")]
+        [InlineData("Lea", "lea@uwu.fr")]
+        [InlineData("null", null)]
+        public void GetByNameTests(string name, string mail)
         {
-            var name = "Dylan";
-            var mail = "dylan.toledano@epita.fr";
-
-            var result = _repository.GetByName(name).Mail;
+            var result = _repository.GetByName(name)?.Mail;
 
             Assert.Equal(mail, result);
         }
 
-        [Fact]
-        public void GetByIdTest()
+        [Theory]
+        [InlineData(1, "dylan.toledano@epita.fr")]
+        [InlineData(2, "leo@epitech.fr")]
+        [InlineData(3, "lea@uwu.fr")]
+        [InlineData(225, null)]
+        public void GetByIdTests(long id, string mail)
         {
-            var id = 1;
-            var mail = "dylan.toledano@epita.fr";
-
-            var result = _repository.GetById(id).Mail;
+            var result = _repository.GetById(id)?.Mail;
 
             Assert.Equal(mail, result);
         }
@@ -81,16 +83,27 @@ namespace TestBlueddit
             Assert.Equal(pseudo, result?.Name);
         }*/
 
-        [Fact]
-        public void SignInTest()
+        [Theory]
+        [InlineData("Dylan", "password")]
+        [InlineData("Leo", "password")]
+        [InlineData("Lea", "password")]
+        [InlineData("Quentin", "password")]
+        public void SignInTests(string pseudo, string password)
         {
-            string pseudo = "Dylan";
-            string password = "password";
-
             var result = _repository.SignIn(pseudo, password);
-            
+
             Assert.NotNull(result);
             Assert.Equal(pseudo, result?.Name);
+        }
+
+        [Theory]
+        [InlineData("Dylan", "pass")]
+        [InlineData("Leololo", "password")]
+        public void SignInnullTests(string pseudo, string password)
+        {
+            var result = _repository.SignIn(pseudo, password);
+
+            Assert.Null(result);
         }
     }
 }

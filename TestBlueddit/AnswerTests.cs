@@ -38,7 +38,7 @@ namespace TestBlueddit
         [InlineData(1, 4)]
         [InlineData(2, 1)]
         [InlineData(3, 1)]
-        [InlineData(4, 0)]
+        [InlineData(4, 1)]
         [InlineData(13, 1)]
         [InlineData(15, 1)]
         public void GetByThreadTests(long threadId, long expected)
@@ -56,6 +56,18 @@ namespace TestBlueddit
             var result = _repository.GetRootAnswerOfThread(threadId);
 
             Assert.Equal(threadId, result.ThreadId);
+        }
+
+        [Theory]
+        [InlineData(1, 3)]
+        [InlineData(2, 3)]
+        [InlineData(4, 1)]
+        [InlineData(8, 4)]
+        public void GetRootAnswerOfThreadTests(long threadId, long expected)
+        {
+            var result = _repository.GetRootAnswerOfThread(threadId);
+
+            Assert.Equal(expected, result.UserId);
         }
     }
 }
