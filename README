@@ -1,0 +1,6 @@
+Ce projet utilise docker pour se lancer avec une base de données SQL Server 2022.
+
+Pour démarer ce projet lancez : "docker compose down ; docker compose up --build" dans le dossier Bluedit.
+
+Et attendez le log :
+	Recovery is complete. This is an informational message only. No user action is required.
