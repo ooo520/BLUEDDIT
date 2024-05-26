@@ -45,8 +45,8 @@
 <div class="thread">
 	<div class="answer">
 			<div class="answer-top-info">
-				<a class="user-or-category-link" href="/r/@Model.CategoryName">
-					r/@Model.CategoryName
+				<a class="user-or-category-link" href="/b/@Model.CategoryName">
+					b/@Model.CategoryName
 				</a>
 				<div>•</div>
 			@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
