@@ -100,7 +100,7 @@ namespace bluedit.Pages
                     Responses = Responses.OrderByDescending((a) => a.CreationDate).ToList();
 					break;
                 case "TOP":
-                    Responses = Responses.OrderBy((a) => _opinionRepository.GetLikesCountForAnswer(a.Id)).ToList();
+                    Responses = Responses.OrderByDescending((a) => _opinionRepository.GetLikesCountForAnswer(a.Id)).ToList();
                     break;
                 default:
 					break;
