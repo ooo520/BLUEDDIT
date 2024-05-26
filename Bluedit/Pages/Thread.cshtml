@@ -44,16 +44,15 @@
 
 <div class="thread">
 	<div class="answer">
-		<div class="thread-top-info">
 			<div class="answer-top-info">
 				<a class="user-or-category-link" href="/r/@Model.CategoryName">
 					r/@Model.CategoryName
 				</a>
 				<div>•</div>
+			@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
+			<div>•</div>
 				<div><time>@Model.Answers.First().CreationDate.ToLongDateString()</time></div>
 			</div>
-			@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
-		</div>
 		<h1>@Model.Thread.Title</h1>
 		<div>@Model.Answers.First().Content</div>
 		<div class="thread-bottom-info">
