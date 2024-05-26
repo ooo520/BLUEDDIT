@@ -23,8 +23,8 @@ namespace bluedit.Pages
             new SelectListItem { Value = "DESC", Text = "Ancien" },
             new SelectListItem { Value = "TOP", Text = "Populaire" },
 
-            new SelectListItem { Value = "A-Z", Text = "A à Z" },
-            new SelectListItem { Value = "Z-A", Text = "Z à A" },
+            new SelectListItem { Value = "A-Z", Text = "A - Z" },
+            new SelectListItem { Value = "Z-A", Text = "Z - A" },
         };
 
         [BindProperty(SupportsGet = true)]

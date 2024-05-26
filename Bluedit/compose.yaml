@@ -18,8 +18,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: bluedit-container
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+  #  environment:
+  #    - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       - sql-server
     ports:

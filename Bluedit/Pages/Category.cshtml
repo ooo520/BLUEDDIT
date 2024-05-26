@@ -80,7 +80,7 @@
 	</div>
 
 	<!-- Trié par -->
-	<form class="sort-and-filter" method="get">
+	<form class="sort-and-filter" id="filterForm"  method="get">
 		<select class="bluedit-button" name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
 		<input class="filter-input" type="text" name="SearchQuery" asp-for="SearchQuery" placeholder="Cherchez par titre..." />
 		<button id="search-button" class="bluedit-button" type="submit">Chercher</button>
