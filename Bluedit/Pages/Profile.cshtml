@@ -12,12 +12,42 @@
 }
 else
 {
-	<form method="post">
-		<textarea name="description" placeholder="Modifiez votre description..." maxlength="256">@Model.Blueditor.Description</textarea>
-		<button type="submit" class="submit-button" asp-page-handler="Save">Sauvegarder</button>
+	<style>
+		.description-form {
+			display: grid;
+			grid-template-columns: 1fr auto;
+			column-gap: 10px;
+		}
+
+		.description-input {
+			border-radius: var(--rounded-corner);
+			padding-inline: 10px;
+			resize: none;
+		}
+
+		.save-description-button {
+			background-color: blue;
+		}
+
+		.current-user-forms {
+			display: flex;
+			flex-direction: column;
+			row-gap: 10px;
+		}
+
+		.log-out-button {
+			background-color: red;
+		}
+	</style>
+
+	<div class="current-user-forms">
+	<form class="description-form" method="post">
+		<textarea class="description-input" name="description" placeholder="Modifiez votre description..." maxlength="256">@Model.Blueditor.Description</textarea>
+		<button type="submit" class="bluedit-button submit-button save-description-button" asp-page-handler="Save">Sauvegarder</button>
 	</form>
 
 	<form method="post">
-		<button type="submit" class="submit-button" asp-page-handler="Disconnect">Déconnexion</button>
+			<button type="submit" class="bluedit-button submit-button log-out-button" asp-page-handler="Disconnect">Déconnexion</button>
 	</form>
+	</div>
 }
