@@ -1,4 +1,4 @@
-﻿@page "/signup"
+﻿@page "/signup/{redirectUrl?}"
 @model bluedit.Pages.SignUpModel
 @{
 	ViewData["Title"] = "Inscription";
@@ -27,5 +27,5 @@
 	<input class="text-input" type="password" name="Password" placeholder="Mot de passe" maxlength="128" />
 	<input class="text-input" type="text" name="Mail" placeholder="Mail" maxlength="128" />
 	<input type="submit" class="submit-button" value="S'inscrire" />
-	<div>Déjà inscris ? <a href="/login">Connectez-vous !</a></div>
+	<div>Déjà inscrit ? <a href="/login/@Model.redirectUrl">Connectez-vous !</a></div>
 </form>

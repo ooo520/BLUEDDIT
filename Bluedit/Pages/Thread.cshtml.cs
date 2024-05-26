@@ -32,6 +32,8 @@ namespace bluedit.Pages
 		private readonly DataAccess.Interfaces.ICategoryRepository _categoryRepository;
 		private readonly DataAccess.Interfaces.IOpinionRepository _opinionRepository;
 		private readonly IHttpContextAccessor _httpContextAccessor;
+        public string currentUrl;
+        public string currentEncodedUrl;
 		public bool isLoggedIn = false;
 
 		public ThreadModel(
@@ -49,6 +51,8 @@ namespace bluedit.Pages
 			_categoryRepository = categoryRepository;
 			_opinionRepository = opinionRepository;
 			_httpContextAccessor = httpContextAccessor;
+            currentUrl = _httpContextAccessor.HttpContext.Request.GetEncodedPathAndQuery();
+            currentEncodedUrl = HttpUtility.UrlEncode( currentUrl );
 		}
 
 		public string username => _httpContextAccessor.HttpContext.Request.Cookies["username"];
@@ -110,7 +114,7 @@ namespace bluedit.Pages
         {
 			if (!IsLoggedIn())
 			{
-				return Redirect("/login/" + HttpUtility.UrlEncode(_httpContextAccessor.HttpContext.Request.GetEncodedPathAndQuery()));
+				return Redirect("/login/" + currentEncodedUrl);
 			}
 
 			var comment = Request.Form["Comment"];
