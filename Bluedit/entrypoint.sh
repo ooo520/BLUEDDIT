@@ -18,7 +18,6 @@ wait_for_sql_server() {
         done
 }
 
-
 # Start SQL Server
 /opt/mssql/bin/sqlservr &
 pid=$!
