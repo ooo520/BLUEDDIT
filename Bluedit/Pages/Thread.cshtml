@@ -11,6 +11,7 @@
 		font-size: 18px;
 		font-weight: bold;
 	}
+
 	.comment-input {
 		border-radius: var(--rounded-corner);
 		padding-inline: 10px;
@@ -27,62 +28,84 @@
 		background-color: blue;
 		align-self: flex-end;
 	}
+
+	.thread {
+		display: flex;
+		flex-direction: column;
+		row-gap: 10px;
+	}
+
+	.thread-top-info {
+		display: flex;
+		flex-direction: column;
+		font-size: 0.875rem;
+	}
 </style>
 
-<div class="answer">
-	<h1>@Model.Thread.Title</h1>
-	<div class="answer-top-info">
-	@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
-	<div>•</div>
-	<div><time>@Model.Answers.First().CreationDate.ToLongDateString()</time></div>
-	</div>
-	<div>@Model.Answers.First().Content</div>
-	<div class="thread-bottom-info">
-		@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new {
-			isConnected = Model.isLoggedIn,
-			answerId = Model.Answers.First().Id,
-			answerLikes = Model.Answers.First().Likes
-		}))
-	</div>
-</div>
-
-@if (Model.isLoggedIn)
-{
-	<form class="comment-form" method="post">
-		<textarea class="comment-input" name="comment" placeholder="Ecrivez un commentaire..."></textarea>
-		<button class="bluedit-button comment-button" type="submit">Commenter</button>
-	</form>
-}
-else
-{
-	<div><a href="/signup/@Model.currentEncodedUrl">Inscrivez-vous</a> ou <a href="/login/@Model.currentEncodedUrl">connectez-vous</a> pour participer à la discussion !</div>
-}
-
-<div class="options">
-	<!-- Trié par -->
-	<form id="sortingForm" method="get">
-		<select class="bluedit-button" name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
-	</form>
-</div>
-<div class="answers">
-	@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1)) {
-		<div class="answer">
+<div class="thread">
+	<div class="answer">
+		<div class="thread-top-info">
 			<div class="answer-top-info">
-				@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Answer.User.Name }))
+				<a class="user-or-category-link" href="/r/@Model.CategoryName">
+					r/@Model.CategoryName
+				</a>
 				<div>•</div>
-				<div><time>@Answer.CreationDate.ToLongDateString()</time></div>
+				<div><time>@Model.Answers.First().CreationDate.ToLongDateString()</time></div>
 			</div>
-			<div>@Answer.Content</div>
-			<div class="thread-bottom-info">
-				@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new { isConnected = Model.isLoggedIn, answerId = Answer.Id, answerLikes = Answer.Likes }))
-			</div>
-			@if (Answer != Model.Answers.Last())
-			{
-				<hr />
-			}
+			@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Model.Answers.First().User.Name }))
 		</div>
+		<h1>@Model.Thread.Title</h1>
+		<div>@Model.Answers.First().Content</div>
+		<div class="thread-bottom-info">
+			@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new
+			{
+				isConnected = Model.isLoggedIn,
+				answerId = Model.Answers.First().Id,
+				answerLikes = Model.Answers.First().Likes
+			}))
+		</div>
+	</div>
+
+	@if (Model.isLoggedIn)
+	{
+		<form class="comment-form" method="post">
+			<textarea class="comment-input" name="comment" placeholder="Ecrivez un commentaire..."></textarea>
+			<button class="bluedit-button comment-button" type="submit">Commenter</button>
+		</form>
 	}
+	else
+	{
+		<div><a href="/signup/@Model.currentEncodedUrl">Inscrivez-vous</a> ou <a href="/login/@Model.currentEncodedUrl">connectez-vous</a> pour participer à la discussion !</div>
+	}
+
+	<div class="options">
+		<!-- Trié par -->
+		<form id="sortingForm" method="get">
+			<select class="bluedit-button" name="Sorting" id="sortingSelect" asp-for="Sorting" asp-items="Model.SortOptions"></select>
+		</form>
+	</div>
+	<div class="answers">
+		@foreach (bluedit.Dbo.Answer Answer in Model.Answers.Skip(1))
+		{
+			<div class="answer">
+				<div class="answer-top-info">
+					@(await Html.RenderComponentAsync<Username>(RenderMode.ServerPrerendered, new { username = Answer.User.Name }))
+					<div>•</div>
+					<div><time>@Answer.CreationDate.ToLongDateString()</time></div>
+				</div>
+				<div>@Answer.Content</div>
+				<div class="thread-bottom-info">
+					@(await Html.RenderComponentAsync<Opinions>(RenderMode.ServerPrerendered, new { isConnected = Model.isLoggedIn, answerId = Answer.Id, answerLikes = Answer.Likes }))
+				</div>
+				@if (Answer != Model.Answers.Last())
+				{
+					<hr />
+				}
+			</div>
+		}
+	</div>
 </div>
+
 @section Scripts {
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
