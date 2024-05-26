@@ -29,9 +29,7 @@ namespace bluedit.Controllers
 				return BadRequest();
 			}
 
-			await SubmitOpinion(answerId, true);
-
-			return Ok();
+			return Ok(await SubmitOpinion(answerId, true));
 		}
 
 		[HttpPost("downvote/{answerId}")]
@@ -42,12 +40,10 @@ namespace bluedit.Controllers
 				return BadRequest();
 			}
 
-			await SubmitOpinion(answerId, false);
-
-			return Ok();
+			return Ok(await SubmitOpinion(answerId, false));
 		}
 
-		private async Task SubmitOpinion(long answerId, bool vote)
+		private async Task<int> SubmitOpinion(long answerId, bool vote)
 		{
 			long userId = _userRepository.GetByName(username).Id;    // user should not be null
 
@@ -62,15 +58,18 @@ namespace bluedit.Controllers
 			if (opinion == null)
 			{
 				await _opinionRepository.Create(newOpinion);
+				return vote ? 1 : -1;
 			}
 			else if (opinion.Like == vote)
 			{
 				await _opinionRepository.Delete(opinion.Id);
+				return vote ? -1 : 1;
 			}
 			else
 			{
 				opinion.Like = vote;
 				await _opinionRepository.Update(opinion);
+				return vote ? 2 : -2;
 			}
 		}
 

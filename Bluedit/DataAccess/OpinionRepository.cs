@@ -15,7 +15,7 @@ namespace bluedit.DataAccess
 
         public Dbo.Opinion? GetUserOpinionOnAnswer(long userId, long answerId)
         {
-			EfModels.Opinion? opinion = _context.Opinions.FirstOrDefault(o => o.AnswerId == answerId);
+			EfModels.Opinion? opinion = _context.Opinions.FirstOrDefault(o => o.AnswerId == answerId && o.AuthorId == userId);
 			if (opinion == null)
 			{
 				return null;
