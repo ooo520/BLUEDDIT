@@ -20,6 +20,7 @@
 	.comment-form {
 		display: flex;
 		flex-direction: column;
+		row-gap: 5px;
 	}
 
 	.comment-button {
@@ -86,10 +87,10 @@ else
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const sortingSelect = document.getElementById('sortingSelect');
-			const filterForm = document.getElementById('filterForm');
+			const sortingForm = document.getElementById('sortingForm');
 
 			sortingSelect.addEventListener('change', function () {
-				filterForm.submit(); // Submit the form when sorting option changes
+				sortingForm.submit(); // Submit the form when sorting option changes
 			});
 		});
 	</script>
